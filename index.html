@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <!-- external libraries -->
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="./lib/underscore-min.js"></script>
+  <script src="./lib/jsrender.min.js"></script>
+  <script src="./lib/moment.min.js"></script>
+  <script src="./lib/noclickdelay.js"></script>
+  <script src='http://api.tiles.mapbox.com/mapbox.js/v1.3.1/mapbox.js'></script>
+
+  <!-- external styles -->
+  <link href='http://api.tiles.mapbox.com/mapbox.js/v1.3.1/mapbox.css' rel='stylesheet' />
+
+  <!-- core -->
+  <script src="./app/App.js"></script>
+  <!-- app -->
+  <script src="./app/script.js"></script>
+  <link rel="stylesheet" href="./assets/css/style.css" />
+</head>
+<body>
+
+<div id="loading"></div>
+
+<nav id="menu">
+  <button class="btn-menu menu-close">&#10005;</button>
+  <ul>
+    <li><a href="#schedule">Schedule</a></li>
+    <li><a href="#guests">Guests</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#map">Map</a></li>
+  </ul>
+</nav>
+
+<div id="pages">
+  <div class="toast">This is an announcement</div>
+  <header id="header" class="search-open">
+    <div id="search">
+      <input class="search-input" type="text" placeholder="Search events & guests" required />
+    </div>
+    <a href="#" class="btn-back"><span></span><label>back</label></a>
+    <button class="btn-search"></button>
+    <button class="btn-menu menu-toggle">&#9776;</button>
+    <h1>Test</h1>
+  </header>
+
+  <!-- Pages -->
+  <div id="about" class="page">
+    <section class="page-content">
+      <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse consectetur ut quam vel pulvinar. Ut hendrerit eget mi vitae semper. Integer ornare massa eget rutrum euismod. Ut condimentum elit mauris, sit amet viverra lectus sodales vitae. Sed risus erat, facilisis quis quam ac, lacinia viverra augue. Donec cursus nibh mauris, a fringilla nisl mollis sit amet. Nam ac erat tortor.
+      </p>
+      <p>
+      Etiam ac elit dictum, semper tortor a, consectetur lectus. Praesent consectetur mi non ipsum interdum accumsan. Curabitur et vehicula nisl. Phasellus congue consectetur varius. Donec volutpat libero nec dolor rutrum eleifend. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec in risus quis mi condimentum bibendum id eu felis. Mauris quis molestie ipsum. Aliquam convallis dapibus volutpat. Phasellus vehicula vestibulum sem ut mattis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed gravida risus id metus sodales commodo.
+      </p>
+      <p>
+      Phasellus suscipit turpis sed eros commodo sagittis. Nunc vitae viverra dui, a dapibus enim. Mauris nec malesuada elit. Integer commodo, nibh congue hendrerit viverra, libero sapien pharetra tortor, ac mattis purus sem id enim. Nulla sem nunc, commodo in tempus non, convallis at mauris. Aliquam non condimentum velit. Etiam sed augue vel enim aliquam ornare. Sed sed gravida lectus. Praesent turpis ligula, laoreet eget nulla vitae, sodales venenatis metus. Praesent convallis justo lacus, auctor convallis dui tristique vel. Ut ultrices semper nibh, ac pharetra mauris aliquet et. Etiam non lectus ipsum. Nam nec neque quam. Aenean id tortor purus. Pellentesque consequat sapien sit amet nisl consectetur, vitae dictum lorem vehicula.
+      </p>
+      <p>
+      Aliquam erat volutpat. Pellentesque in felis egestas, dictum purus quis, suscipit turpis. Aenean viverra sollicitudin velit eget consequat. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec vel metus eu turpis vestibulum sollicitudin adipiscing sed purus. Nam sagittis orci sapien, at convallis sem tincidunt et. Nulla turpis nisl, mattis a tempor a, feugiat sed augue.
+      </p>
+      <p>
+      Sed vel dui in quam pretium molestie vitae ut odio. Aliquam nec lacus nisl. In dapibus orci non mauris cursus, sit amet mollis elit feugiat. Sed lorem eros, fringilla vel arcu eget, hendrerit bibendum ante. Suspendisse porttitor sapien id sem gravida dictum. Morbi dictum vel augue suscipit blandit. Donec porttitor velit vitae turpis lobortis hendrerit. Curabitur ullamcorper lacus at nunc bibendum gravida. Nullam volutpat ante a condimentum suscipit. Sed fermentum porta ligula eu viverra.  
+      </p>
+    </section>
+  </div>
+  <div id="event-detail" class="page">
+    <section class="page-content">
+    </section>
+  </div>
+  <div id="schedule" class="page">
+    <ul id="schedule-list"></ul>
+    <div class="no-results hide">No results found.</div>
+  </div>
+  <div id="map" class="page">
+    <div id="map-container"></div>
+  </div>
+</div>
+
+<script id="schedule-item-template" type="x-jquery-tmpl">
+  {{if type && type == "separator"}}
+  <li class="separator"><span>{{:fdate}}</span></li>
+  {{else}}
+  <li class="event">
+    <a href="#event-detail/{{:EventID}}" data-event-id="{{:EventID}}">
+      <span class="title">{{:Title}}</span>
+      <span class="time">{{:fdate}}</span>
+    </a>
+  </li>
+  {{/if}}
+</script>
+
+<script id="event-detail-template" type="x-jquery-tmpl">
+  <h2 class="title">{{:Title}}</h2>
+  <span class="location">{{:Location}}</span>
+  <span class="date">{{:fdate}}</span>
+  <p class="description">{{:Description}}</p>
+</script>
+
+</body>
+</html>
