@@ -26,12 +26,13 @@
 <div id="loading"></div>
 
 <nav id="menu">
-  <button class="btn-menu menu-close">&#10005;</button>
+  <button class="btn-menu menu-close"></button>
   <ul>
     <li><a href="#schedule">Schedule</a></li>
     <li><a href="#guests">Guests</a></li>
     <li><a href="#about">About</a></li>
-    <li><a href="#map">Map</a></li>
+    <li><a href="#local-map">Local Map</a></li>
+    <li><a href="#hotel-map">Hotel Map</a></li>
   </ul>
 </nav>
 
@@ -43,7 +44,7 @@
     </div>
     <a href="#" class="btn-back"><span></span><label>back</label></a>
     <button class="btn-search"></button>
-    <button class="btn-menu menu-toggle">&#9776;</button>
+    <button class="btn-menu menu-toggle"></button>
     <h1>Test</h1>
   </header>
 
@@ -75,8 +76,11 @@
     <ul id="schedule-list"></ul>
     <div class="no-results hide">No results found.</div>
   </div>
-  <div id="map" class="page">
-    <div id="map-container"></div>
+  <div id="local-map" class="page">
+    <div id="local-map-container" class="map-container"></div>
+  </div>
+  <div id="hotel-map" class="page">
+    <div id="hotel-map-container" class="map-container"></div>
   </div>
 </div>
 

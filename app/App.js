@@ -1,11 +1,11 @@
 var App = function() {
   this.init();
-}
+};
 App.prototype.init = function(options) {
   console.log("App init");
   new NoClickDelay(document.getElementById('menu'));
   new NoClickDelay(document.getElementById('header'));
-}
+};
 
 App.View = function(options) {
   var t = this;
@@ -31,14 +31,14 @@ App.View = function(options) {
   if(t.init) {
     t.init.apply(t);
   }
-}
+};
 
 
 App.Model = function(options) {
   var t = this;
   t.url = options.url;
   t.parse = options.parse;
-}
+};
 App.Model.prototype.load = function(callback) {
   var t = this;
   $.ajax({
@@ -54,7 +54,7 @@ App.Model.prototype.load = function(callback) {
       callback.apply(t, [t.data]);
     }
   });
-}
+};
 
 
 App.Router = function(options) {
@@ -62,9 +62,9 @@ App.Router = function(options) {
     containerId: "pages",
     pageClass: "page",
     activeClass: "active"
-  }
+  };
   this.options = $.extend({}, defaults, options);
-}
+};
 App.Router.prototype.start = function() {
   console.log("Router start");
   var t = this;
@@ -78,7 +78,7 @@ App.Router.prototype.start = function() {
     path = path || t.options.defaultRoute;
     t.navigate(path);
   });
-}
+};
 App.Router.prototype.navigate = function(path) {
   console.log("Navigating to "+path);
   var t = this;
@@ -88,4 +88,4 @@ App.Router.prototype.navigate = function(path) {
     t.routes[page].apply(t.context, parts);
   }
   this.options.onNavigate.apply(this);
-}
+};

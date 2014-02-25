@@ -17,7 +17,7 @@ $(function() {
       app.views.header.setTitle(t.title);
       return t;
     }
-  }
+  };
   _.extend(App.View.prototype, viewMixin);
 
   app.views = {};
@@ -109,15 +109,29 @@ $(function() {
     }
   });
 
-  app.views.map = new App.View({
-    id: 'map',
-    title: 'Map',
+  app.views.localMap = new App.View({
+    id: 'local-map',
+    title: 'Local Map',
     init: function() {
-      this.map = L.mapbox.map('map-container', 'bgun.map-0xo3jced',{
+      this.map = L.mapbox.map('local-map-container', 'bgun.map-0xo3jced',{
         attributionControl: false,
         detectRetina: true,
         retinaVersion: 'bgun.map-0xo3jced'
       }).setView([34.02183,-84.32968],16);
+    }
+  });
+
+  app.views.hotelMap = new App.View({
+    id: 'hotel-map',
+    title: 'Hotel Map',
+    init: function() {
+      this.map = L.map('hotel-map-container', {
+        attributionControl: false,
+      }).setView([0,0],16);
+      // hotel map
+      var hotelMapUrl = "https://www.grecianbay.com/assets/images/map.jpg";
+      var hotelMapBounds = [[-0.006,-0.01],[0.006,0.01]];
+      L.imageOverlay(hotelMapUrl, hotelMapBounds).addTo(this.map);
     }
   });
 
@@ -136,7 +150,7 @@ $(function() {
         return t.indexOf(text) == -1;
       }).hide();
       t.$el.find('li.separator').hide();
-      if(t.$el.find('li:visible').length == 0) {
+      if(t.$el.find('li:visible').length === 0) {
         t.$el.find('.no-results').show();
       } else {
         t.$el.find('.no-results').hide();
@@ -177,10 +191,10 @@ $(function() {
       });
       console.timeEnd("sort");
 
-      for(var i=0; i<arr.length; i++) {
+      for(i = 0; i<arr.length; i++) {
         a = arr[i];
         a.fdate = moment(a.StartDate).format("dddd h:mm a");
-        if(i == 0) {
+        if(i === 0) {
           schedule.push({ type: "separator", fdate: moment(a.StartDate).format("dddd h:mm a")});
         }
         if(i > 0 && a.StartDate > arr[i-1].StartDate) {
@@ -202,28 +216,34 @@ $(function() {
     t.views.header.$el.find('.btn-back').hide();
     t.views.header.$el.find('.btn-search').show();
     t.views.schedule.show();
-  }
+  };
   app.controllers.about = function() {
     var t = this;
     t.views.header.$el.find('.btn-back').hide();
     t.views.header.hideSearch();
     t.views.schedule.clearFilter();
     t.views.about.show();
-  }
+  };
   app.controllers.eventDetail = function(id) {
     var t = this;
-    t.views.eventDetail.render(t.models.events, id)
+    t.views.eventDetail.render(t.models.events, id);
     t.views.header.$el.find('.btn-back').show();
     t.views.header.hideSearch();
     t.views.schedule.clearFilter();
     t.views.eventDetail.show();
-  }
-  app.controllers.map = function() {
+  };
+  app.controllers.localMap = function() {
     var t = this;
     t.views.header.$el.find('.btn-back').hide();
     t.views.header.hideSearch();
-    t.views.map.show();
-  }
+    t.views.localMap.show();
+  };
+  app.controllers.hotelMap = function() {
+    var t = this;
+    t.views.header.$el.find('.btn-back').hide();
+    t.views.header.hideSearch();
+    t.views.hotelMap.show();
+  };
 
   // init
   app.models.events.load(function(data) {
@@ -238,7 +258,8 @@ $(function() {
         "about"        : app.controllers.about,
         "schedule"     : app.controllers.schedule,
         "event-detail" : app.controllers.eventDetail,
-        "map"          : app.controllers.map
+        "local-map"    : app.controllers.localMap,
+        "hotel-map"    : app.controllers.hotelMap
       },
       onNavigate: function() {
         app.views.menu.$el.trigger('close');
