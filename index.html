@@ -4,21 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
-  <!-- external libraries -->
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-  <script src="./lib/underscore-min.js"></script>
-  <script src="./lib/jsrender.min.js"></script>
-  <script src="./lib/moment.min.js"></script>
-  <script src="./lib/noclickdelay.js"></script>
-  <script src='http://api.tiles.mapbox.com/mapbox.js/v1.3.1/mapbox.js'></script>
 
-  <!-- external styles -->
-  <link href='http://api.tiles.mapbox.com/mapbox.js/v1.3.1/mapbox.css' rel='stylesheet' />
+  <script data-main="app/main" src="lib/require.js"></script>
 
-  <!-- core -->
-  <script src="./app/App.js"></script>
-  <!-- app -->
-  <script src="./app/script.js"></script>
+  <link rel="stylesheet" href="./assets/css/mapbox.css" />
   <link rel="stylesheet" href="./assets/css/style.css" />
 </head>
 <body>
@@ -89,8 +78,8 @@
   <li class="separator"><span>{{:fdate}}</span></li>
   {{else}}
   <li class="event">
-    <a href="#event-detail/{{:EventID}}" data-event-id="{{:EventID}}">
-      <span class="title">{{:Title}}</span>
+    <a href="#event-detail/{{:event_id}}" data-event-id="{{:event_id}}">
+      <span class="title">{{:title}}</span>
       <span class="time">{{:fdate}}</span>
     </a>
   </li>
@@ -98,10 +87,10 @@
 </script>
 
 <script id="event-detail-template" type="x-jquery-tmpl">
-  <h2 class="title">{{:Title}}</h2>
-  <span class="location">{{:Location}}</span>
+  <h2 class="title">{{:title}}</h2>
+  <span class="location">{{:location}}</span>
   <span class="date">{{:fdate}}</span>
-  <p class="description">{{:Description}}</p>
+  <p class="description">{{:description}}</p>
 </script>
 
 </body>

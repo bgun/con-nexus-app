@@ -1,11 +1,8 @@
-var App = function() {
-  this.init();
-};
-App.prototype.init = function(options) {
-  console.log("App init");
-  new NoClickDelay(document.getElementById('menu'));
-  new NoClickDelay(document.getElementById('header'));
-};
+define(["jquery"],
+function($) {
+//
+
+var App = function() {};
 
 App.View = function(options) {
   var t = this;
@@ -14,18 +11,21 @@ App.View = function(options) {
   t.$el = $('#'+options.id);
   t.$template = $('#'+options.template);
   console.log("Constructing view: "+options.id);
+
+  function setEvent(evt, sel, fun) {
+    console.log("Setting "+evname+" event for #"+t.$el.attr('id')+" "+sel);
+    t.$el.on(evname, sel, function() {
+      var args = Array.prototype.slice.call(arguments);
+      console.log("args",args);
+      fun.apply(t, args);
+    });
+  }
   for(ev in t.events) {
     if(t.events.hasOwnProperty(ev)) {
       parts = ev.split(" ");
       evname = parts.shift();
       sel = parts.join(" ");
-      console.log("Setting "+evname+" event for #"+t.$el.attr('id')+" "+sel);
-      (function(evt) {
-        t.$el.on(evname, sel, function() {
-          var args = Array.prototype.slice.call(arguments);
-          t.events[evt].apply(t, args);
-        });
-      })(ev);
+      setEvent(ev, sel, t.events[ev]);
     }
   }
   if(t.init) {
@@ -89,3 +89,8 @@ App.Router.prototype.navigate = function(path) {
   }
   this.options.onNavigate.apply(this);
 };
+
+return App;
+
+//
+});
