@@ -18,8 +18,8 @@ require.config({
   }
 });
 
-require(["jquery", "underscore", "mapbox", "jsrender", "moment", "fastclick", "app/App.js"],
-function( $,        _,            mapbox,   jsrender,   moment,   FastClick,   App) {
+require(["jquery", "underscore", "mapbox", "jsrender", "moment", "fastclick", "app/templateLoader.js", "app/App.js"],
+function( $,        _,            mapbox,   jsrender,   moment,   FastClick,   templateLoader,          App) {
 
   window.addEventListener('load', function() {
       FastClick.attach(document.body);
@@ -123,14 +123,16 @@ function( $,        _,            mapbox,   jsrender,   moment,   FastClick,   A
 
   app.views.eventDetail = new App.View({
     id: 'event-detail',
-    template: 'event-detail-template',
+    template: 'event_detail',
     title: 'Event Detail',
     // custom methods
     render: function(model, id) {
       var t = this;
-      t.$el.find('.page-content').html(
-        t.$template.render(model.data.lookup[id])
-      );
+      templateLoader.load(t.template, function(tmpl) {
+        t.$el.find('.page-content').html(
+          tmpl.render(model.data.lookup[id])
+        );
+      });
     }
   });
 
@@ -162,7 +164,7 @@ function( $,        _,            mapbox,   jsrender,   moment,   FastClick,   A
 
   app.views.schedule = new App.View({
     id: 'schedule',
-    template: 'schedule-item-template',
+    template: 'schedule_item',
     title: 'Schedule',
     // custom methods
     filter: function(text) {
@@ -189,9 +191,11 @@ function( $,        _,            mapbox,   jsrender,   moment,   FastClick,   A
     },
     render: function(model) {
       var t = this;
-      t.$el.find('#schedule-list').html(
-        t.$template.render(model.data.withSeparators)
-      );
+      templateLoader.load(t.template, function(tmpl) {
+        t.$el.find('#schedule-list').html(
+          tmpl.render(model.data.lookup[id])
+        );
+      });
       return t;
     }
   });

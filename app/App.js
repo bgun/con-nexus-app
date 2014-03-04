@@ -9,7 +9,7 @@ App.View = function(options) {
   var parts, ev, evname, sel;
   $.extend(t, options);
   t.$el = $('#'+options.id);
-  t.$template = $('#'+options.template);
+  t.template = options.template;
   console.log("Constructing view: "+options.id);
 
   function setEvent(evt, sel, fun) {
