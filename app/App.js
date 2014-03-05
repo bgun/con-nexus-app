@@ -9,8 +9,14 @@ App.View = function(options) {
   var parts, ev, evname, sel;
   $.extend(t, options);
   t.$el = $('#'+options.id);
-  t.template = options.template;
-  console.log("Constructing view: "+options.id);
+  // throw an error if we specify a template that doesn't exist
+  if(options.template !== undefined) {
+    if($('#'+options.template).length == 1) {
+      t.$template = $('#'+options.template);
+    } else {
+      throw new Error("Template '"+options.template+"' not found");
+    }
+  }
 
   function setEvent(evt, sel, fun) {
     console.log("Setting "+evname+" event for #"+t.$el.attr('id')+" "+sel);

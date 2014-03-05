@@ -80,5 +80,25 @@
 
 </div>
 
+<script id="event-detail-template" type="x-jquery-tmpl">
+  <h2 class="title">{{:title}}</h2>
+  <span class="location">{{:location}}</span>
+  <span class="date">{{:fdate}}</span>
+  <p class="description">{{:description}}</p>
+</script>
+
+<script id="schedule-item-template" type="x-jquery-tmpl">
+  {{if type && type == "separator"}}
+  <li class="separator"><span>{{:fdate}}</span></li>
+  {{else}}
+  <li class="event">
+    <a href="#event-detail/{{:event_id}}" data-event-id="{{:event_id}}">
+      <span class="title">{{:title}}</span>
+      <span class="time">{{:fdate}}</span>
+    </a>
+  </li>
+  {{/if}}
+</script>
+
 </body>
 </html>
