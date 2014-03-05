@@ -387,3 +387,18 @@ nav ul li {
 #event-detail .description {
   font-size: 1.4rem;
 }
+
+.map-popup {
+  line-height: 1.1em;
+  padding-right: 20px;
+}
+.map-popup h4 {
+  line-height: 1.4em;
+}
+.map-popup h5 {
+  color: #777;
+  font-size: 1rem;
+  margin: 0;
+  padding: 0;
+  text-transform: uppercase;
+}
