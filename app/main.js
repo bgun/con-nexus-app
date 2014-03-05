@@ -116,6 +116,11 @@ function( $,        _,            mapbox,   jsrender,   moment,   FastClick,   A
     }
   });
 
+  app.views.home = new App.View({
+    id: 'home',
+    title: 'Home'
+  });
+
   app.views.about = new App.View({
     id: 'about',
     title: 'About'
@@ -253,6 +258,11 @@ function( $,        _,            mapbox,   jsrender,   moment,   FastClick,   A
   });
 
   app.controllers = {};
+  app.controllers.home = function() {
+    var t = this;
+    t.views.header.$el.find('.btn-back').hide();
+    t.views.home.show();
+  };
   app.controllers.schedule = function() {
     var t = this;
     t.views.header.$el.find('.btn-back').hide();
@@ -297,6 +307,7 @@ function( $,        _,            mapbox,   jsrender,   moment,   FastClick,   A
       context: app,
       defaultRoute: "schedule",
       routes: {
+        "home"         : app.controllers.home,
         "about"        : app.controllers.about,
         "schedule"     : app.controllers.schedule,
         "event-detail" : app.controllers.eventDetail,
