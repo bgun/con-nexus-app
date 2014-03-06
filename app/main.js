@@ -305,7 +305,7 @@ function( $,        _,            mapbox,   jsrender,   moment,   FastClick,   A
 
     app.router = new App.Router({
       context: app,
-      defaultRoute: "schedule",
+      defaultRoute: "home",
       routes: {
         "home"         : app.controllers.home,
         "about"        : app.controllers.about,
