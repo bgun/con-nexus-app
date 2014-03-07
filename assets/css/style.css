@@ -13,6 +13,10 @@ body {
   position: relative;
 }
 
+* {
+  outline: none;
+}
+
 .hide {
   display: none;
 }
@@ -386,6 +390,30 @@ nav ul li {
 }
 #event-detail .description {
   font-size: 1.4rem;
+}
+
+#hero-photo {
+  background-color: #000;
+  height: 50%;
+}
+
+#home-menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+#home-menu li {
+  border-bottom: 1px solid #DDD;
+  list-style: none;
+  margin: 0;
+}
+#home-menu li a {
+  display: block;
+  padding: 1rem;
+}
+#home .page-content {
+  height: 100%;
+  padding: 0;
 }
 
 .map-popup {
