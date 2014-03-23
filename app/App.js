@@ -9,6 +9,12 @@ App.View = function(options) {
   var parts, ev, evname, sel;
   $.extend(t, options);
   t.$el = $('#'+options.id);
+  
+  t.activeClass     = options.activeClass || "active";
+  t.pageClass       = options.pageClass || "page";
+  t.pageContainerId = options.pageContainerId || "pages";
+  t.$pageContainer = $('#'+t.pageContainerId);
+
   // throw an error if we specify a template that doesn't exist
   if(options.template !== undefined) {
     if($('#'+options.template).length == 1) {
@@ -37,6 +43,12 @@ App.View = function(options) {
   if(t.init) {
     t.init.apply(t);
   }
+};
+App.View.prototype.show = function() {
+  var t = this;
+  t.$pageContainer.find('.'+t.pageClass+'.'+t.activeClass).removeClass(t.activeClass);
+  t.$el.addClass(t.activeClass);
+  return t;
 };
 
 
