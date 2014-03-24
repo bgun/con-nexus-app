@@ -43,7 +43,7 @@
   <!-- Pages -->
   <div id="home" class="page">
     <section class="page-content home-page-content">
-      <div id="hero-photo"></div>
+      <div id="hero-photo"><img class="logo" /></div>
       <ul id="home-menu">
         <li><a href="#schedule">Schedule</a></li>
         <li><a href="#todo">My Todo List</a></li>
@@ -97,6 +97,8 @@
   <span class="location">{{:location}}</span>
   <span class="date">{{:fdate}}</span>
   <p class="description">{{:description}}</p>
+  <button type="button" class="remove-todo {{if !inTodo}}hide{{/if}}" data-event-id="{{:event_id}}">Remove from My Todo</button>
+  <button type="button" class="add-todo    {{if inTodo}}hide{{/if}}"  data-event-id="{{:event_id}}">Add to My Todo</button>
 </script>
 
 <script id="schedule-item-template" type="x-jquery-tmpl">

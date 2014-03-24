@@ -36,6 +36,7 @@ function( $,        _,            jsrender,   moment,   FastClick,   App) {
 
   require([
     "models/events",
+    "models/todo",
     "controllers/aboutController",
     "controllers/eventDetailController",
     "controllers/homeController",
@@ -45,6 +46,7 @@ function( $,        _,            jsrender,   moment,   FastClick,   App) {
     "views/menu"
   ], function(
     events,
+    todo,
     aboutController,
     eventDetailController,
     homeController,
@@ -55,12 +57,19 @@ function( $,        _,            jsrender,   moment,   FastClick,   App) {
   ) {
   //
 
+    app.models.events = events;
+    app.models.todo = todo;
+
+    todo.load();
+
     events.load(function(data) {
 
       console.log("Events loaded.", data);
-      localStorage.setItem("events", JSON.stringify(data));
 
       $loading.hide();
+      $('#hero-photo')
+        .css('background-image','url("/assets/jcon2014/cover01.jpg")')
+        .find('.logo').attr('src','/assets/jcon2014/logo.png');
 
       app.router = new App.Router({
         context: app,
@@ -77,7 +86,9 @@ function( $,        _,            jsrender,   moment,   FastClick,   App) {
           menuView.$el.trigger('close');
         }
       });
-      app.router.start();
+      app.router.start({
+        context: app
+      });
 
     });
 

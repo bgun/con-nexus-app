@@ -117,7 +117,7 @@ nav ul li {
 }
 
 #header {
-  background: #60606A;
+  background: rgba(50,50,50,0.8);
   height: 4.5rem;
   line-height: 4.5rem;
   position: absolute;
@@ -271,7 +271,7 @@ nav ul li {
   line-height: 1.2em;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
-  padding: 4.5rem 0 0 0;
+  padding: 0;
   position: absolute;
     top: 0;
     left: 0;
@@ -291,7 +291,7 @@ nav ul li {
   margin: 1rem 0;
 }
 .page .page-content {
-  padding: 1.5rem;
+  padding: 6rem 1.5rem 1.5rem 1.5rem;
 }
 .page.active {
   transform: translate3d(0,0,0);
@@ -317,7 +317,7 @@ nav ul li {
 #schedule-list {
   list-style: none;
   margin: 0;
-  padding: 0;
+  padding: 4.5rem 0 0 0;
 }
 #schedule-list li {
   border-top: 1px solid #DDD;
@@ -394,7 +394,18 @@ nav ul li {
 
 #hero-photo {
   background-color: #000;
-  height: 50%;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  height: 40%;
+  position: relative;
+}
+#hero-photo .logo {
+  display: block;
+  margin: 0 10%;
+  position: absolute;
+    bottom: 1rem;
+  width: 80%;
 }
 
 #home-menu {

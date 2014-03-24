@@ -8,6 +8,9 @@ App.View = function(options) {
   var t = this;
   var parts, ev, evname, sel;
   $.extend(t, options);
+  if(!options.id) {
+    throw new Error("View requires an id attribute");
+  }
   t.$el = $('#'+options.id);
   
   t.activeClass     = options.activeClass || "active";
@@ -28,7 +31,6 @@ App.View = function(options) {
     console.log("Setting "+evname+" event for #"+t.$el.attr('id')+" "+sel);
     t.$el.on(evname, sel, function() {
       var args = Array.prototype.slice.call(arguments);
-      console.log("args",args);
       fun.apply(t, args);
     });
   }
@@ -54,8 +56,10 @@ App.View.prototype.show = function() {
 
 App.Model = function(options) {
   var t = this;
-  t.url = options.url;
-  t.parse = options.parse;
+  //t.url = options.url;
+  //t.parse = options.parse;
+  t = $.extend(t, options);
+  console.log("model",t);
 };
 App.Model.prototype.load = function(callback) {
   var t = this;
@@ -69,9 +73,18 @@ App.Model.prototype.load = function(callback) {
       } else {
         t.data = resp;
       }
-      callback.apply(t, [t.data]);
+      if(callback) {
+        callback.apply(t, [t.data]);
+      }
+    },
+    error: function(err) {
+      console.log(err);
+      alert("Error loading model");
     }
   });
+};
+App.Model.prototype.setData = function(data) {
+  this.data = data;
 };
 
 

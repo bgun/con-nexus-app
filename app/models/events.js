@@ -28,6 +28,9 @@ return new App.Model({
       sorted: sortedItems,
       withSeparators: schedule
     };
+  },
+  getById: function(id) {
+    return this.data.lookup[id];
   }
 });
 
