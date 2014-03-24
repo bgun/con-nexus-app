@@ -29,7 +29,6 @@ function( $,        _,            jsrender,   moment,   FastClick,   App) {
   var $loading = $('#loading');
 
   window.app = new App();
-
   app.models = {};
   app.views = {};
   app.controllers = {};
@@ -45,14 +44,17 @@ function( $,        _,            jsrender,   moment,   FastClick,   App) {
     "controllers/scheduleController",
     "views/menu"
   ], function(
+    // models
     events,
     todo,
+    // controllers
     aboutController,
     eventDetailController,
     homeController,
     hotelMapController,
     localMapController,
     scheduleController,
+    // global views
     menuView
   ) {
   //
@@ -60,7 +62,7 @@ function( $,        _,            jsrender,   moment,   FastClick,   App) {
     app.models.events = events;
     app.models.todo = todo;
 
-    todo.load();
+    todo.load(); // localStorage, no callback
 
     events.load(function(data) {
 

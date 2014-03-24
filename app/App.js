@@ -83,7 +83,7 @@ App.Model.prototype.load = function(callback) {
     }
   });
 };
-App.Model.prototype.setData = function(data) {
+App.Model.prototype.set = function(data) {
   this.data = data;
 };
 
