@@ -4,9 +4,9 @@ define(["views/header", "views/schedule"], function(headerView, scheduleView) {
   return function() {
     headerView.$el.find('.btn-back').hide();
     headerView.$el.find('.btn-search').show();
+    headerView.setTitle(scheduleView.title);
 
-    var eventData = JSON.parse(localStorage.getItem("events"));
-    scheduleView.render(eventData);
+    scheduleView.render(this.models.events.data);
     scheduleView.show();
   };
 

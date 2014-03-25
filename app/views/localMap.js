@@ -1,4 +1,4 @@
-define(["App", "mapbox"], function(App, mapbox) {
+define(["App", "mapbox", "jsrender"], function(App, mapbox, jsrender) {
 //
 
 return new App.View({

@@ -19,8 +19,8 @@ require.config({
   }
 });
 
-require(["jquery", "underscore", "jsrender", "moment", "fastclick", "App"],
-function( $,        _,            jsrender,   moment,   FastClick,   App) {
+require(["jquery", "underscore", "moment", "fastclick", "App"],
+function( $,        _,            moment,   FastClick,   App) {
 
   window.addEventListener('load', function() {
       FastClick.attach(document.body);
@@ -34,10 +34,14 @@ function( $,        _,            jsrender,   moment,   FastClick,   App) {
   app.controllers = {};
 
   require([
+    "models/con",
     "models/events",
+    "models/guests",
     "models/todo",
     "controllers/aboutController",
     "controllers/eventDetailController",
+    "controllers/guestsController",
+    "controllers/guestDetailController",
     "controllers/homeController",
     "controllers/hotelMapController",
     "controllers/localMapController",
@@ -45,11 +49,15 @@ function( $,        _,            jsrender,   moment,   FastClick,   App) {
     "views/menu"
   ], function(
     // models
+    con,
     events,
+    guests,
     todo,
     // controllers
     aboutController,
     eventDetailController,
+    guestsController,
+    guestDetailController,
     homeController,
     hotelMapController,
     localMapController,
@@ -59,14 +67,23 @@ function( $,        _,            jsrender,   moment,   FastClick,   App) {
   ) {
   //
 
+    app.models.con = con;
     app.models.events = events;
+    app.models.guests = guests;
     app.models.todo = todo;
 
     todo.load(); // localStorage, no callback
 
-    events.load(function(data) {
+    var modelParams = {
+      base_url: 'http://con-nexus.herokuapp.com/api',
+      con_id: '5309917d3b4fecd1d100003b'
+    };
 
-      console.log("Events loaded.", data);
+    con.load(modelParams, function(data) {
+
+      app.models.events.set(data.events, true);
+      app.models.guests.set(data.guests, true);
+      console.log(app.models);
 
       $loading.hide();
       $('#hero-photo')
@@ -81,6 +98,8 @@ function( $,        _,            jsrender,   moment,   FastClick,   App) {
           "about"        : aboutController,
           "schedule"     : scheduleController,
           "event-detail" : eventDetailController,
+          "guests"       : guestsController,
+          "guest-detail" : guestDetailController,
           "local-map"    : localMapController,
           "hotel-map"    : hotelMapController
         },

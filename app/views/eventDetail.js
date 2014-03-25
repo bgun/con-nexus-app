@@ -1,4 +1,4 @@
-define(["App"], function(App) {
+define(["App","jsrender"], function(App,jsrender) {
 //
 
 return new App.View({

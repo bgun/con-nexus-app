@@ -82,6 +82,15 @@
     <div class="no-results hide">No results found.</div>
   </div>
 
+  <div id="guests" class="page">
+    <ul id="guest-list"></ul>
+  </div>
+
+  <div id="guest-detail" class="page">
+    <section class="page-content">
+    </section>
+  </div>
+
   <div id="local-map" class="page">
     <div id="local-map-container" class="map-container"></div>
   </div>
@@ -112,6 +121,16 @@
     </a>
   </li>
   {{/if}}
+</script>
+
+<script id="guest-item-template" type="x-jquery-tmpl">
+  <li class="guest-item"><a href="#guest-detail/{{:guest_id}}">{{:first_name}} {{:last_name}}</a></li>
+</script>
+
+<script id="guest-detail-template" type="x-jquery-tmpl">
+  <h2 class="guest-name">{{:first_name}} {{:last_name}}</h2>
+  {{if bio}}<p>{{:bio}}</p>{{/if}}
+  <div class="guest-itinerary"></div>
 </script>
 
 <script id="map-popup-template" type="x-jquery-tmpl">

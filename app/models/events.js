@@ -2,13 +2,12 @@ define(["App"], function(App) {
 //
 
 return new App.Model({
-  url: 'http://localhost:5000/api/events',
-  parse: function(r) {
+  parse: function(resp) {
     var t = this;
     // todo: models!
     var schedule = [];
     var assocItems = {};
-    var sortedItems = r.items;
+    var sortedItems = resp;
 
     for(i = 0; i < sortedItems.length; i++) {
       a = sortedItems[i];

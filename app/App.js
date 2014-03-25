@@ -56,15 +56,25 @@ App.View.prototype.show = function() {
 
 App.Model = function(options) {
   var t = this;
-  //t.url = options.url;
-  //t.parse = options.parse;
   t = $.extend(t, options);
   console.log("model",t);
 };
-App.Model.prototype.load = function(callback) {
+App.Model.prototype.load = function(params,callback) {
   var t = this;
+  if(!t.url) {
+    throw new error("Can't load without a URL");
+  }
+  var url = t.url;
+  for(var p in params) {
+    var token = '{'+p+'}';
+    if(url.indexOf(token) > -1) {
+      console.log("replacing",p);
+      url = url.replace(token, params[p]);
+    }
+  }
+  console.log("loading from URL: "+url);
   $.ajax({
-    url: t.url,
+    url: url,
     type: 'GET',
     dataType: 'json',
     success: function(resp) {
@@ -83,8 +93,14 @@ App.Model.prototype.load = function(callback) {
     }
   });
 };
-App.Model.prototype.set = function(data) {
+App.Model.prototype.parse = function(data) {
+  return data;
+};
+App.Model.prototype.set = function(data, doParse) {
   this.data = data;
+  if(doParse) {
+    this.data = this.parse(data);
+  }
 };
 
 
