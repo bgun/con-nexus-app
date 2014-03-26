@@ -28,11 +28,29 @@ return new App.View({
     t.$el.find('li.event .time').hide();
     t.$el.find('.no-results').hide();
   },
-  render: function(data) {
+  render: function(model) {
     var t = this;
-    t.$el.find('#schedule-list').html(
-      t.$template.render(data.withSeparators)
-    );
+
+    //var now = new Date('2013-06-28 20:01:00');
+    var now = new Date();
+    now.setHours(now.getHours()-1);
+    var items = model.addSeparators(model.data);
+    var visible = 0;
+    for(var i in items) {
+      if(now > new Date(items[i].datetime)) {
+        items[i].display = false;
+      } else {
+        items[i].display = true;
+        visible++;
+      }
+    }
+    if(visible === 0) {
+      t.$el.find('.show-all').show();
+    } else {
+      t.$el.find('.show-all').hide();
+    }
+    var html = t.$template.render(items);
+    t.$el.find('#schedule-list').html(html);
     return t;
   }
 });

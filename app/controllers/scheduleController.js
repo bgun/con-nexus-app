@@ -6,7 +6,8 @@ define(["views/header", "views/schedule"], function(headerView, scheduleView) {
     headerView.$el.find('.btn-search').show();
     headerView.setTitle(scheduleView.title);
 
-    scheduleView.render(this.models.events.data);
+    var model = this.models.events;
+    scheduleView.render(model);
     scheduleView.show();
   };
 

@@ -46,28 +46,23 @@
       <div id="hero-photo"><img class="logo" /></div>
       <ul id="home-menu">
         <li><a href="#schedule">Schedule</a></li>
-        <li><a href="#todo">My Todo List</a></li>
-        <li><a href="#popular">Popular</a></li>
+        <li><a href="#hotel-map">Hotel Map</a></li>
       </ul>
+      <h4 id="todo-list-title">My Todo List</h4>
+      <ul id="todo-list"></ul>
     </section>
   </div>
 
   <div id="about" class="page">
     <section class="page-content">
       <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse consectetur ut quam vel pulvinar. Ut hendrerit eget mi vitae semper. Integer ornare massa eget rutrum euismod. Ut condimentum elit mauris, sit amet viverra lectus sodales vitae. Sed risus erat, facilisis quis quam ac, lacinia viverra augue. Donec cursus nibh mauris, a fringilla nisl mollis sit amet. Nam ac erat tortor.
+      JordanCon is a fantasy literature convention founded in honor of the late author, Robert Jordan. Jordan was the author of the best selling The Wheel of Time series.
       </p>
       <p>
-      Etiam ac elit dictum, semper tortor a, consectetur lectus. Praesent consectetur mi non ipsum interdum accumsan. Curabitur et vehicula nisl. Phasellus congue consectetur varius. Donec volutpat libero nec dolor rutrum eleifend. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec in risus quis mi condimentum bibendum id eu felis. Mauris quis molestie ipsum. Aliquam convallis dapibus volutpat. Phasellus vehicula vestibulum sem ut mattis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed gravida risus id metus sodales commodo.
+      JordanCon features six tracks of simultaneous programming, a Dealers Hall, an Art Show featuring original art by a variety of artists, and charity events benefiting the Mayo Clinic.
       </p>
       <p>
-      Phasellus suscipit turpis sed eros commodo sagittis. Nunc vitae viverra dui, a dapibus enim. Mauris nec malesuada elit. Integer commodo, nibh congue hendrerit viverra, libero sapien pharetra tortor, ac mattis purus sem id enim. Nulla sem nunc, commodo in tempus non, convallis at mauris. Aliquam non condimentum velit. Etiam sed augue vel enim aliquam ornare. Sed sed gravida lectus. Praesent turpis ligula, laoreet eget nulla vitae, sodales venenatis metus. Praesent convallis justo lacus, auctor convallis dui tristique vel. Ut ultrices semper nibh, ac pharetra mauris aliquet et. Etiam non lectus ipsum. Nam nec neque quam. Aenean id tortor purus. Pellentesque consequat sapien sit amet nisl consectetur, vitae dictum lorem vehicula.
-      </p>
-      <p>
-      Aliquam erat volutpat. Pellentesque in felis egestas, dictum purus quis, suscipit turpis. Aenean viverra sollicitudin velit eget consequat. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec vel metus eu turpis vestibulum sollicitudin adipiscing sed purus. Nam sagittis orci sapien, at convallis sem tincidunt et. Nulla turpis nisl, mattis a tempor a, feugiat sed augue.
-      </p>
-      <p>
-      Sed vel dui in quam pretium molestie vitae ut odio. Aliquam nec lacus nisl. In dapibus orci non mauris cursus, sit amet mollis elit feugiat. Sed lorem eros, fringilla vel arcu eget, hendrerit bibendum ante. Suspendisse porttitor sapien id sem gravida dictum. Morbi dictum vel augue suscipit blandit. Donec porttitor velit vitae turpis lobortis hendrerit. Curabitur ullamcorper lacus at nunc bibendum gravida. Nullam volutpat ante a condimentum suscipit. Sed fermentum porta ligula eu viverra.  
+      Past guests have included Harriet McDougal, Brandon Sanderson, Mary Robinette Kowal, Sam Weber, David Wong, Jana G. Oliver, Emilie Bush, David B. Coe and Eugie Foster.
       </p>
     </section>
   </div>
@@ -78,6 +73,7 @@
   </div>
 
   <div id="schedule" class="page">
+    <div class="show-all">Some or all events are past. Click to show all events, or use search.</div>
     <ul id="schedule-list"></ul>
     <div class="no-results hide">No results found.</div>
   </div>
@@ -112,9 +108,9 @@
 
 <script id="schedule-item-template" type="x-jquery-tmpl">
   {{if type && type == "separator"}}
-  <li class="separator"><span>{{:fdate}}</span></li>
+  <li class="separator {{if display === false}}hide{{/if}}"><span>{{:fdate}}</span></li>
   {{else}}
-  <li class="event">
+  <li class="event {{if display === false}}hide{{/if}}">
     <a href="#event-detail/{{:event_id}}" data-event-id="{{:event_id}}">
       <span class="title">{{:title}}</span>
       <span class="time">{{:fdate}}</span>
