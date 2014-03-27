@@ -10,6 +10,7 @@ return new App.View({
     text = text.toLowerCase();
     console.log(text);
     var t = this;
+    t.$el.find('li.past').addClass('unhide');
     t.$el.find('li.event .time').show();
     t.$el.find('li.event').show().filter(function(i) {
       var t = $(this).text().toLowerCase();
