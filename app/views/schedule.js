@@ -26,14 +26,15 @@ return new App.View({
   clearFilter: function() {
     var t = this;
     t.$el.find('li').show();
+    t.$el.find('li.past').hide().removeClass('unhide');
     t.$el.find('li.event .time').hide();
     t.$el.find('.no-results').hide();
   },
   render: function(model) {
     var t = this;
 
-    //var now = new Date('2013-06-28 20:01:00');
-    var now = new Date();
+    var now = new Date('2013-06-28 20:01:00');
+    //TODO: var now = new Date();
     now.setHours(now.getHours()-1);
     var items = model.addSeparators(model.data);
     var visible = 0;
