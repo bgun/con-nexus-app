@@ -7,7 +7,7 @@ return new App.Model({
   },
   saveLocal: function(data) {
   },
-  getBasic: function() {
+  getBasic: function(params, callback) {
     var t = this;
     if(!t.url) {
       throw new error("Can't load without a URL");
@@ -23,7 +23,7 @@ return new App.Model({
       url: url,
       type: 'GET',
       dataType: 'json',
-      params: { basic: 1 },
+      data: { basic: 1 },
       success: function(resp) {
         if(callback) {
           callback.apply(t, [resp]);

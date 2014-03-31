@@ -93,6 +93,11 @@ function( $,        _,            moment,   FastClick,   App) {
     };
 
     var init = function(data) {
+
+      console.log(data);
+
+      localStorage.setItem(LS_KEY_CON, JSON.stringify(data));
+
       localMapView.setView([data.lat, data.lon], 15);
 
       app.models.events.set(data.events, true);
@@ -100,7 +105,7 @@ function( $,        _,            moment,   FastClick,   App) {
       app.models.places.set(data.places, true);
 
       $loading.hide();
-      $toast.hide();
+      $toast.delay(2000).fadeOut();
 
       app.router = new App.Router({
         context: app,
@@ -125,18 +130,29 @@ function( $,        _,            moment,   FastClick,   App) {
     };
 
     app.checkConnection = function() {
+      if(!navigator.connection) {
+        return false;
+      }
       var conn = navigator.connection.type != Connection.NONE;
       return conn;
     };
 
     var checkUpdated = function() {
-      var current_data = localStorage.getItem(LS_KEY_CON);
-      con.getBasic(function(server_data) {
-        if(current_data.updated > server_data.updated) {
-          $toast.text("Checking for updated convention data...").show();
-          con.load(con_model_params, init);
-        }
-      });
+      var current_data = JSON.parse(localStorage.getItem(LS_KEY_CON));
+      if(app.checkConnection()) {
+        con.getBasic(con_model_params, function(server_data) {
+          if(current_data.updated > server_data.updated) {
+            $toast.text("Checking for updated convention data...").show();
+            con.load(con_model_params, init);
+          } else {
+            $toast.text("You're up to date!").show();
+            init(current_data);
+          }
+        });
+      } else {
+        $toast.text("No network connection - using stored data").show();
+        init(current_data);
+      }
     };
 
     if(localStorage.getItem(LS_KEY_CON)) {
@@ -144,7 +160,9 @@ function( $,        _,            moment,   FastClick,   App) {
       checkUpdated();
     } else {
       $toast.text("Downloading convention data for the first time...").show();
-      con.load(con_model_params, init);
+      if(app.checkConnection() || confirm("No connection found. You need an Internet connection to download convention data. Try anyway?")) {
+        con.load(con_model_params, init);
+      }
     }
 
   //

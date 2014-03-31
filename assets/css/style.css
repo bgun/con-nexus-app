@@ -95,11 +95,11 @@ nav ul li {
   color: #FFF;
   font-size: 1.4rem;
   margin: 0 10%;
-  padding: 1rem;
+  padding: 1rem 5%;
   position: fixed;
     bottom: 3rem;
   text-align: center;
-  width: 80%;
+  width: 70%;
   z-index: 1001;
 }
 
