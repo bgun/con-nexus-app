@@ -18,10 +18,8 @@ return new App.Model({
   },
   sort: function(items) {
     return items.sort(function(a,b) {
-      var astr = a.first_name + ' ' + a.last_name;
-      var bstr = b.first_name + ' ' + b.last_name;
-      if(astr > bstr) return 1;
-      if(astr < bstr) return -1;
+      if(a.name > b.name) return 1;
+      if(a.name < b.name) return -1;
       return 0;
     });
   },

@@ -30,13 +30,26 @@ return new App.View({
     t.$el.find('li.event .time').hide();
     t.$el.find('.no-results').hide();
   },
+  addSeparators: function(items) {
+    var arr = [];
+    items = this.model.sort(items);
+    for(var i = 0; i < items.length; i++) {
+      if(i === 0 || (i > 0 && items[i].datetime > items[i-1].datetime)) {
+        arr.push({ type: "separator", datetime: items[i].datetime, fdate: moment(items[i].datetime).format("dddd h:mm a")});
+      }
+      arr.push(items[i]);
+    }
+    console.log(arr);
+    return arr;
+  },
   render: function(model) {
     var t = this;
+    t.model = model;
 
-    var now = new Date('2013-06-28 20:01:00');
-    //TODO: var now = new Date();
+    //var now = new Date('2013-06-28 20:01:00');
+    var now = new Date();
     now.setHours(now.getHours()-1);
-    var items = model.addSeparators(model.data);
+    var items = t.addSeparators(model.data);
     var visible = 0;
     for(var i in items) {
       if(now > new Date(items[i].datetime)) {

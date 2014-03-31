@@ -8,7 +8,7 @@ define(['App'], function(App) {
     render: function(guests) {
       var t = this;
       console.log(guests);
-      t.$el.find('#guest-list').html(
+      t.$el.find('#guests-all').html(
         t.$template.render(guests.sorted)
       );
     }

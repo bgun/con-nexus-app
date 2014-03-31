@@ -7,6 +7,7 @@ return function(id) {
 
   headerView.$el.find('.btn-back').show();
   headerView.hideSearch();
+  headerView.setTitle(guestDetailView.title);
 
   guestDetailView.render(item);
   guestDetailView.show();

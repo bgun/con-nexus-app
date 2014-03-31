@@ -20,6 +20,9 @@ body {
 .hide {
   display: none !important;
 }
+.hidden {
+  display: none;
+}
 .clear {
   clear: both;
 }
@@ -29,6 +32,16 @@ body {
 }
 .past.unhide {
   display: block;
+}
+.in-todo {
+  display: none;
+}
+
+
+h4 {
+  color: #777;
+  margin: 2rem 0 1rem 0;
+  text-transform: uppercase;
 }
 
 nav ul {
@@ -47,7 +60,6 @@ nav ul li {
   border: 2px solid #355360;
   border-radius: 2rem;
   color: #FFF;
-  display: block;
   font-size: 1.3rem;
   line-height: 3.6rem;
   margin: 0 0 0.5rem 0;
@@ -338,8 +350,6 @@ nav ul li {
 
 
 #schedule-list {
-  list-style: none;
-  margin: 0;
   padding: 4.5rem 0 0 0;
 }
 #schedule-list li {
@@ -362,20 +372,6 @@ nav ul li {
   margin: 0.5rem;
   padding: 0.5rem 1rem;
 }
-#schedule-list li a {
-  color: #333;
-  display: block;
-  padding: 1.5rem;
-  text-decoration: none;
-}
-#schedule-list li a .title {
-  display: block;
-  font-size: 1.6rem;
-}
-#schedule-list li a .time {
-  display: none;
-  font-size: 1.2rem;
-}
 #schedule .no-results {
   color: #666;
   font-size: 1.8rem;
@@ -390,14 +386,24 @@ nav ul li {
   text-align: center;
 }
 
-.map-container {
-  height: 100%;
-  position: absolute;
-  width: 100%;
+.event-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
-.map-container .leaflet-control-zoom {
-  position: relative;
-    top: 4.5rem;
+.event-list li a {
+  color: #333;
+  display: block;
+  padding: 1.5rem;
+  text-decoration: none;
+}
+.event-list li a .title {
+  display: block;
+  font-size: 1.6rem;
+}
+.event-list li a .time {
+  display: none;
+  font-size: 1.2rem;
 }
 
 
@@ -416,36 +422,67 @@ nav ul li {
 }
 #event-detail .date {
   font-size: 1.4rem;
-}
-#event-detail .date:before {
-  content: "•";
-  padding: 0 1rem;
+  font-style: italic;
 }
 #event-detail .description {
   font-size: 1.4rem;
 }
+#event-guest-list {
+  border-bottom: 1px solid #DDD;
+}
+#event-guest-list li a {
+  padding: 1rem;
+}
 
 
-/* Guest detail */
+/* Guest list items */
 
-#guest-list {
+.guest-list {
   list-style: none;
   margin: 0;
-  padding: 4.5rem 0 0 0;
+  padding: 0;
 }
-#guest-list li {
+.guest-list li {
   border-top: 1px solid #DDD;
   list-style: none;
   margin: 0;
   padding: 0;
 }
-#guest-list li a {
+.guest-list li a {
   color: #333;
   display: block;
   padding: 1rem 2rem;
   text-decoration: none;
 }
-#guest-detail {
+.guest-list li a {
+  display: block;
+}
+
+
+/* Guest detail */
+
+#guest-detail .guest-name {
+  color: #444;
+  font-size: 3rem;
+  font-weight: 300;
+  margin-bottom: 0.7rem;
+}
+#guest-detail .guest-title {
+  color: #A35;
+  font-size: 1.5rem;
+  margin-top: 0.7rem;
+}
+#guest-event-list li {
+  border-top: 1px solid #DDD;
+}
+#guest-event-list {
+  border-bottom: 1px solid #DDD;
+}
+#guest-event-list li a {
+  padding: 1rem;
+}
+#guest-event-list li a .time {
+  display: block;
 }
 
 
@@ -538,6 +575,15 @@ nav ul li {
 
 /* map stuff */
 
+.map-container {
+  height: 100%;
+  position: absolute;
+  width: 100%;
+}
+.map-container .leaflet-control-zoom {
+  position: relative;
+    top: 4.5rem;
+}
 .map-popup {
   line-height: 1.1em;
   padding-right: 20px;

@@ -67,6 +67,11 @@ function( $,        _,            moment,   FastClick,   App) {
   ) {
   //
 
+    app.settings = {
+      api_url: 'http://con-nexus.herokuapp.com/api',
+      con_id: "jcon2014"
+    };
+
     app.models.con = con;
     app.models.events = events;
     app.models.guests = guests;
@@ -74,12 +79,12 @@ function( $,        _,            moment,   FastClick,   App) {
 
     todo.load(); // localStorage, no callback
 
-    var modelParams = {
-      base_url: 'http://con-nexus.herokuapp.com/api',
-      con_id: '5309917d3b4fecd1d100003b'
+    var con_model_params = {
+      api_url: app.settings.api_url,
+      con_id: app.settings.con_id
     };
 
-    con.load(modelParams, function(data) {
+    con.load(con_model_params, function(data) {
 
       app.models.events.set(data.events, true);
       app.models.guests.set(data.guests, true);

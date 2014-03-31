@@ -8,17 +8,6 @@ return new App.Model({
     }
     return items;
   },
-  addSeparators: function(items) {
-    var arr = [];
-    items = this.sort(items);
-    for(var i in items) {
-      if(i === 0 || (i > 0 && items[i].datetime > items[i-1].datetime)) {
-        arr.push({ type: "separator", datetime: items[i].datetime, fdate: moment(items[i].datetime).format("dddd h:mm a")});
-      }
-      arr.push(items[i]);
-    }
-    return arr;
-  },
   sort: function(items) {
     // sort by date
     return items.sort(function(a,b) {
