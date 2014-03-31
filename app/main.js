@@ -142,7 +142,7 @@ function( $,        _,            moment,   FastClick,   App) {
       if(app.checkConnection()) {
         con.getBasic(con_model_params, function(server_data) {
           if(current_data.updated > server_data.updated) {
-            $toast.text("Checking for updated convention data...").show();
+            $toast.text("Found an update! Downloading convention data...").show();
             con.load(con_model_params, init);
           } else {
             $toast.text("You're up to date!").show();
