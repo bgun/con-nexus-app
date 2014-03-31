@@ -319,8 +319,8 @@ nav ul li {
   z-index: 2;
 }
 #pages.menu-open {
-  transform: translate3d(-15rem,0,0);
-  -webkit-transform: translate3d(-15rem,0,0);
+  transform: translate3d(-18rem,0,0);
+  -webkit-transform: translate3d(-18rem,0,0);
 }
 
 .page {
