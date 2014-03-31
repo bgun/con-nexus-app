@@ -13,6 +13,7 @@
 <body>
 
 <div id="loading"></div>
+<div id="toast">Loading...</div>
 
 <nav id="menu">
   <button class="btn-menu menu-close"></button>
@@ -28,8 +29,6 @@
 
 <div id="pages">
 
-  <div class="toast">This is an announcement</div>
-
   <header id="header" class="search-open">
     <div id="search">
       <input class="search-input" type="text" placeholder="Search events & guests" required />
@@ -43,27 +42,45 @@
   <!-- Pages -->
   <div id="home" class="page">
     <section class="page-content home-page-content">
-      <div id="hero-photo"><img class="logo" /></div>
+      <div id="hero-photo" style="background-image: url('/assets/jcon2014/cover01.jpg');">
+        <img class="logo" src="/assets/jcon2014/logo.png" />
+      </div>
       <ul id="home-menu">
         <li><a href="#schedule">Schedule</a></li>
+        <li><a href="#guests">Guests</a></li>
         <li><a href="#hotel-map">Hotel Map</a></li>
       </ul>
       <h4 id="todo-list-title">My Todo List</h4>
-      <ul id="todo-list"></ul>
+      <ul id="todo-list">
+        <li class="no-results">Your todo list is empty.</li>
+      </ul>
     </section>
   </div>
 
   <div id="about" class="page">
     <section class="page-content">
+      <h1>About JordanCon</h1>
       <p>
-      JordanCon is a fantasy literature convention founded in honor of the late author, Robert Jordan. Jordan was the author of the best selling The Wheel of Time series.
+      JordanCon is a fantasy literature convention founded in honor of the late author, Robert Jordan.
+      Jordan was the author of the best selling The Wheel of Time series.
       </p>
       <p>
-      JordanCon features six tracks of simultaneous programming, a Dealers Hall, an Art Show featuring original art by a variety of artists, and charity events benefiting the Mayo Clinic.
+      JordanCon features six tracks of simultaneous programming, a Dealers Hall, an Art Show featuring
+      original art by a variety of artists, and charity events benefiting the Mayo Clinic.
       </p>
       <p>
-      Past guests have included Harriet McDougal, Brandon Sanderson, Mary Robinette Kowal, Sam Weber, David Wong, Jana G. Oliver, Emilie Bush, David B. Coe and Eugie Foster.
+      Past guests have included Harriet McDougal, Brandon Sanderson, Mary Robinette Kowal, Sam Weber,
+      David Wong, Jana G. Oliver, Emilie Bush, David B. Coe and Eugie Foster.
       </p>
+      <hr />
+      <h1>About This App</h1>
+      <p>
+      <strong>Con-Nexus</strong> is a small, open-source HTMl5 framework for building mobile convention apps.
+      You can find it on <a href="http://https://github.com/bgun/con-nexus-app">GitHub</a>, or email me:
+      <a href="mailto:ben@bengundersen.com">Ben Gundersen</a>
+      </p>
+      <hr />
+      <small class="center">Made with &hearts; in New York City</small>
     </section>
   </div>
 
@@ -124,7 +141,7 @@
 </script>
 
 <script id="guest-item-template" type="x-jquery-tmpl">
-  <li class="guest-item"><a href="#guest-detail/{{:guest_id}}">{{:name}}</a></li>
+  <li class="guest-item"><a href="#guest-detail/{{:guest_id}}">{{:name}} <span class="guest-title">{{:title}}</span></a></li>
 </script>
 
 <script id="guest-detail-template" type="x-jquery-tmpl">

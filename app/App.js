@@ -2,7 +2,9 @@ define(["jquery"],
 function($) {
 //
 
-var App = function() {};
+var App = function(settings) {
+  this.settings = settings;
+};
 
 App.View = function(options) {
   var t = this;
@@ -28,7 +30,6 @@ App.View = function(options) {
   }
 
   function setEvent(evt, sel, fun) {
-    console.log("Setting "+evname+" event for #"+t.$el.attr('id')+" "+sel);
     t.$el.on(evname, sel, function() {
       var args = Array.prototype.slice.call(arguments);
       fun.apply(t, args);
@@ -57,7 +58,6 @@ App.View.prototype.show = function() {
 App.Model = function(options) {
   var t = this;
   t = $.extend(t, options);
-  console.log("model",t);
 };
 App.Model.prototype.load = function(params,callback) {
   var t = this;
@@ -68,11 +68,9 @@ App.Model.prototype.load = function(params,callback) {
   for(var p in params) {
     var token = '{'+p+'}';
     if(url.indexOf(token) > -1) {
-      console.log("replacing",p);
       url = url.replace(token, params[p]);
     }
   }
-  console.log("loading from URL: "+url);
   $.ajax({
     url: url,
     type: 'GET',
@@ -89,7 +87,7 @@ App.Model.prototype.load = function(params,callback) {
     },
     error: function(err) {
       console.log(err);
-      alert("Error loading model");
+      alert("Error loading data.");
     }
   });
 };
@@ -113,7 +111,6 @@ App.Router = function(options) {
   this.options = $.extend({}, defaults, options);
 };
 App.Router.prototype.start = function() {
-  console.log("Router start");
   var t = this;
   t.context = t.options.context;
   t.routes = t.options.routes;
@@ -127,7 +124,6 @@ App.Router.prototype.start = function() {
   });
 };
 App.Router.prototype.navigate = function(path) {
-  console.log("Navigating to "+path);
   var t = this;
   var parts = path.split('/');
   var page = parts.shift();

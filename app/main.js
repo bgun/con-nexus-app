@@ -26,13 +26,6 @@ function( $,        _,            moment,   FastClick,   App) {
       FastClick.attach(document.body);
   }, false);
 
-  var $loading = $('#loading');
-
-  window.app = new App();
-  app.models = {};
-  app.views = {};
-  app.controllers = {};
-
   require([
     "models/con",
     "models/events",
@@ -71,16 +64,26 @@ function( $,        _,            moment,   FastClick,   App) {
   ) {
   //
 
-    app.settings = {
+    // localStorage keys
+    var LS_KEY_CON = "con";
+
+    // cached jquery
+    var $loading = $('#loading');
+    var $toast   = $('#toast');
+
+    window.app = new App({
       api_url: 'http://con-nexus.herokuapp.com/api',
       con_id: "jcon2014"
-    };
+    });
 
-    app.models.con = con;
-    app.models.events = events;
-    app.models.guests = guests;
-    app.models.places = places;
-    app.models.todo = todo;
+    // so our controllers can access these later
+    app.models = {
+      con:    con,
+      events: events,
+      guests: guests,
+      places: places,
+      todo: todo
+    };
 
     todo.load(); // localStorage, no callback
 
@@ -89,19 +92,15 @@ function( $,        _,            moment,   FastClick,   App) {
       con_id: app.settings.con_id
     };
 
-    con.load(con_model_params, function(data) {
-    
+    var init = function(data) {
       localMapView.setView([data.lat, data.lon], 15);
 
       app.models.events.set(data.events, true);
       app.models.guests.set(data.guests, true);
       app.models.places.set(data.places, true);
-      console.log(app.models);
 
       $loading.hide();
-      $('#hero-photo')
-        .css('background-image','url("/assets/jcon2014/cover01.jpg")')
-        .find('.logo').attr('src','/assets/jcon2014/logo.png');
+      $toast.hide();
 
       app.router = new App.Router({
         context: app,
@@ -123,10 +122,31 @@ function( $,        _,            moment,   FastClick,   App) {
       app.router.start({
         context: app
       });
+    };
 
-    });
+    app.checkConnection = function() {
+      var conn = navigator.connection.type != Connection.NONE;
+      return conn;
+    };
+
+    var checkUpdated = function() {
+      var current_data = localStorage.getItem(LS_KEY_CON);
+      con.getBasic(function(server_data) {
+        if(current_data.updated > server_data.updated) {
+          $toast.text("Checking for updated convention data...").show();
+          con.load(con_model_params, init);
+        }
+      });
+    };
+
+    if(localStorage.getItem(LS_KEY_CON)) {
+      $toast.text("Checking for updated convention data...").show();
+      checkUpdated();
+    } else {
+      $toast.text("Downloading convention data for the first time...").show();
+      con.load(con_model_params, init);
+    }
 
   //
   });
-
 });

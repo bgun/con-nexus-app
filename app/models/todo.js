@@ -3,9 +3,9 @@ define(["App"], function(App) {
 
 return new App.Model({
   url: '',
-  name: 'todo',
+  key: 'todo',
   load: function() {
-    var json = localStorage.getItem(this.name) || "[]";
+    var json = localStorage.getItem(this.key) || "[]";
     this.data = JSON.parse(json);
   },
   addTodo: function(id) {
@@ -29,7 +29,7 @@ return new App.Model({
   },
   save: function(data) {
     var json = JSON.stringify(data);
-    localStorage.setItem(this.name, json);
+    localStorage.setItem(this.key, json);
   },
   hasItem: function(id) {
     return this.data.indexOf(id) > -1;
