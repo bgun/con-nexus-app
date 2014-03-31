@@ -110,7 +110,7 @@ nav ul li {
   position: fixed;
     top: 0;
     right: 0;
-  width: 15rem;
+  width: 18rem;
   z-index: 1;
 }
 #menu ul {
@@ -125,7 +125,7 @@ nav ul li {
   font-size: 1.6rem;
   height: 5rem;
   line-height: 5rem;
-  padding: 0 1.5rem;
+  padding: 0 2rem;
   text-decoration: none;
   text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
 }

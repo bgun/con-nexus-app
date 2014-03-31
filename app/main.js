@@ -33,9 +33,7 @@ require(["jquery", "underscore", "moment", "fastclick", "App"],
 function( $,        _,            moment,   FastClick,   App) {
 
   // remove 200ms delay on mobile click
-  window.addEventListener('load', function() {
-      FastClick.attach(document.body);
-  }, false);
+  FastClick.attach(document.body);
 
   // app require
   require([
@@ -105,8 +103,6 @@ function( $,        _,            moment,   FastClick,   App) {
     };
 
     var init = function(data) {
-
-      console.log(data);
 
       localStorage.setItem(LS_KEY_CON, JSON.stringify(data));
 
