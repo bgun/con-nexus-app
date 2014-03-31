@@ -37,6 +37,7 @@ function( $,        _,            moment,   FastClick,   App) {
     "models/con",
     "models/events",
     "models/guests",
+    "models/places",
     "models/todo",
     "controllers/aboutController",
     "controllers/eventDetailController",
@@ -46,12 +47,14 @@ function( $,        _,            moment,   FastClick,   App) {
     "controllers/hotelMapController",
     "controllers/localMapController",
     "controllers/scheduleController",
-    "views/menu"
+    "views/menu",
+    "views/localMap"
   ], function(
     // models
     con,
     events,
     guests,
+    places,
     todo,
     // controllers
     aboutController,
@@ -63,7 +66,8 @@ function( $,        _,            moment,   FastClick,   App) {
     localMapController,
     scheduleController,
     // global views
-    menuView
+    menuView,
+    localMapView
   ) {
   //
 
@@ -75,6 +79,7 @@ function( $,        _,            moment,   FastClick,   App) {
     app.models.con = con;
     app.models.events = events;
     app.models.guests = guests;
+    app.models.places = places;
     app.models.todo = todo;
 
     todo.load(); // localStorage, no callback
@@ -85,9 +90,12 @@ function( $,        _,            moment,   FastClick,   App) {
     };
 
     con.load(con_model_params, function(data) {
+    
+      localMapView.setView([data.lat, data.lon], 15);
 
       app.models.events.set(data.events, true);
       app.models.guests.set(data.guests, true);
+      app.models.places.set(data.places, true);
       console.log(app.models);
 
       $loading.hide();

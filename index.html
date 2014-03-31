@@ -37,7 +37,7 @@
     <a href="#" class="btn-back"><span></span><label>back</label></a>
     <button class="btn-search"></button>
     <button class="btn-menu menu-toggle"></button>
-    <h1>Test</h1>
+    <h1></h1>
   </header>
 
   <!-- Pages -->
@@ -98,10 +98,10 @@
 </div>
 
 <script id="event-detail-template" type="x-jquery-tmpl">
-  <h2 class="title">{{:title}}</h2>
-  <span class="location">{{:location}}</span>
-  <span class="date">{{:fdate}}</span>
-  <p class="description">{{:description}}</p>
+  <h1 class="event-title">{{:title}}</h1>
+  <span class="event-location">{{:location}}</span>
+  <span class="event-date">{{:fdate}}</span>
+  <p class="event-description">{{:description}}</p>
   <button type="button" class="btn btn-todo remove-todo {{if !inTodo}}hidden{{/if}}" data-event-id="{{:event_id}}">Remove from My Todo</button>
   <button type="button" class="btn btn-todo add-todo    {{if inTodo }}hidden{{/if}}" data-event-id="{{:event_id}}">Add to My Todo</button>
   <h4>Presenters</h4>
@@ -128,7 +128,7 @@
 </script>
 
 <script id="guest-detail-template" type="x-jquery-tmpl">
-  <h2 class="guest-name">{{:name}}</h2>
+  <h1 class="guest-name">{{:name}}</h1>
   <h3 class="guest-title">{{:title}}</h3>
   <h4>Itinerary</h4>
   <ul id="guest-event-list" class="event-list">
@@ -142,10 +142,9 @@
 
 <script id="map-popup-template" type="x-jquery-tmpl">
   <div class="map-popup">
-    <h4>{{:name}}</h4>
-    <h5>Address</h5>
-    <address>{{:address}}</address><br />
-    <h5>Phone</h5>
+    <h2 class="place-name">{{:name}}</h2>
+    <h3 class="place-subtitle {{:icon}}">{{:subtitle}}</h3>
+    <address>{{:address}}<br />{{:city}}, {{:state}} {{:zip}}</address><br />
     <span class="phone">{{:phone}}</span>
   </div>
 </script>

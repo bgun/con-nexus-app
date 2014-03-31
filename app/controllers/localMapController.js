@@ -4,10 +4,11 @@ define(["views/header","views/localMap"], function(headerView, localMapView) {
 return function() {
   headerView.$el.find('.btn-back').hide();
   headerView.hideSearch();
+  headerView.setTitle(localMapView.title);
 
   // TODO: load places
-  //var model = this.models.locations;
-  localMapView.renderMarkers([]);
+  var markers = this.models.places.data;
+  localMapView.renderMarkers(markers, this.settings.con_id);
   localMapView.show();
 };
 

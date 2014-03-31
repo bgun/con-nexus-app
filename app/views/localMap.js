@@ -1,6 +1,10 @@
 define(["App", "mapbox", "jsrender"], function(App, mapbox, jsrender) {
 //
 
+var popupOptions = {
+  autoPanPadding: [10,50]
+};
+
 return new App.View({
   id: 'local-map',
   title: 'Local Map',
@@ -10,30 +14,25 @@ return new App.View({
       attributionControl: false,
       detectRetina: true,
       retinaVersion: 'bgun.map-0xo3jced'
-    }).setView([34.02183,-84.32968],16);
-  },
-  renderMarkers: function(places) {
-    var t = this;
-    places = [
-      {
-        lon: 34.0221599,
-        lat: -84.330078,
-        name: "DoubleTree by Hilton Atlanta-Roswell",
-        address: "1075 Holcomb Bridge Road<br />Roswell, Georgia, 30076",
-        phone: "770-992-9600"
-      }
-    ];
-    var marker;
-    var markerIcon = L.icon({
-      iconUrl: "./assets/images/map-marker.png",
-      iconSize: [33,48],
-      iconAnchor: [16,48],
-      popupAnchor: [0,-32]
     });
-    _.each(places, function(l) {
-      console.log(l);
-      marker = L.marker([l.lon, l.lat], {icon: markerIcon});
-      marker.bindPopup($('#map-popup-template').render(l));
+  },
+  setView: function(center, zoom) {
+    this.map.setView(center, zoom);
+  },
+  renderMarkers: function(places, con_id) {
+    console.log("places",places);
+    var t = this;
+    var marker;
+    _.each(places, function(m) {
+      console.log(m);
+      var icon = L.icon({
+        iconUrl: "./assets/"+con_id+"/map_marker_"+m.icon+".png",
+        iconSize: [50,63],
+        iconAnchor: [25,59],
+        popupAnchor: [0,-40]
+      });
+      marker = L.marker([m.lat, m.lon], {icon: icon});
+      marker.bindPopup($('#map-popup-template').render(m), popupOptions);
       t.map.addLayer(marker);
     });
   }

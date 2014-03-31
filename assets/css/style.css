@@ -38,12 +38,6 @@ body {
 }
 
 
-h4 {
-  color: #777;
-  margin: 2rem 0 1rem 0;
-  text-transform: uppercase;
-}
-
 nav ul {
   list-style: none;
   margin: 0;
@@ -92,7 +86,7 @@ nav ul li {
   margin-top: 5rem;
 }
 #menu ul li {
-  border-bottom: 1px solid #555;
+  border-bottom: 1px solid #455;
 }
 #menu ul li a {
   color: #EEE;
@@ -182,7 +176,7 @@ nav ul li {
   z-index: 1;
 }
 #header .btn-back {
-  background: #70707B;
+  background: #EEE;
   border: 1px solid #555;
   border-radius: 0 0.5rem 0.5rem 0;
   display: block;
@@ -193,7 +187,7 @@ nav ul li {
   width: 5rem;
 }
 #header .btn-back span {
-  background: #70707B;
+  background: #EEE;
   border: 1px solid #555;
   border-radius: 0.2rem;
   display: block;
@@ -206,9 +200,9 @@ nav ul li {
   z-index: 1;
 }
 #header .btn-back label {
-  background: #70707B;
+  background: #EEE;
   border-radius: 0 0.5rem 0.5rem 0;
-  color: #FFF;
+  color: #444;
   cursor: pointer;
   font-size: 1.3rem;
   font-weight: bold;
@@ -220,7 +214,7 @@ nav ul li {
     right: 0;
   text-align: center;
   text-decoration: none;
-  text-shadow: 0 0 2px #333;
+  text-shadow: 1px 1px 1px #CCC;
   width: 100%;
   z-index: 2;
 }
@@ -320,10 +314,16 @@ nav ul li {
   width: 100%;
   z-index: 2;
 }
-.page h2 {
-  font-size: 2rem;
-  line-height: 2rem;
-  margin: 1rem 0;
+.page h1 {
+  color: #444;
+  font-size: 3rem;
+  font-weight: 300;
+  line-height: 3rem;
+}
+.page h4 {
+  color: #777;
+  margin: 2rem 0 1rem 0;
+  text-transform: uppercase;
 }
 .page .page-content {
   padding: 6rem 1.5rem 1.5rem 1.5rem;
@@ -388,6 +388,7 @@ nav ul li {
 
 .event-list {
   list-style: none;
+  margin: 2.5rem 0 2.5rem 0;
   margin: 0;
   padding: 0;
 }
@@ -411,21 +412,22 @@ nav ul li {
 
 #event-detail {
 }
-#event-detail .title {
-  font-size: 2rem;
+#event-detail .event-title {
+  margin-bottom: 0.7rem;
 }
-#event-detail .location {
+#event-detail .event-location {
   color: #888;
   font-size: 1.4rem;
   font-weight: bold;
   text-transform: uppercase;
 }
-#event-detail .date {
-  font-size: 1.4rem;
+#event-detail .event-date {
+  font-size: 1.5rem;
   font-style: italic;
 }
-#event-detail .description {
+#event-detail .event-description {
   font-size: 1.4rem;
+  margin: 2.5rem 0 2.5rem 0;
 }
 #event-guest-list {
   border-bottom: 1px solid #DDD;
@@ -462,9 +464,6 @@ nav ul li {
 /* Guest detail */
 
 #guest-detail .guest-name {
-  color: #444;
-  font-size: 3rem;
-  font-weight: 300;
   margin-bottom: 0.7rem;
 }
 #guest-detail .guest-title {
@@ -588,13 +587,18 @@ nav ul li {
   line-height: 1.1em;
   padding-right: 20px;
 }
-.map-popup h4 {
+.map-popup .place-name {
   line-height: 1.4em;
+  margin-bottom: 0;
 }
-.map-popup h5 {
+.map-popup .place-subtitle {
   color: #777;
-  font-size: 1rem;
-  margin: 0;
+  font-size: 1.2rem;
+  margin: 0 0 1rem 0;
   padding: 0;
   text-transform: uppercase;
 }
+.map-popup .place-subtitle.beer     { color: #F50; }
+.map-popup .place-subtitle.food     { color: #05F; }
+.map-popup .place-subtitle.shopping { color: #0B0; }
+.map-popup .place-subtitle.special  { color: #C35; }
