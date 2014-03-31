@@ -19,13 +19,25 @@ require.config({
   }
 });
 
+// check for mobile
+if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry|IEMobile)/)) {
+  document.addEventListener("deviceready", onDeviceReady, false);
+} else {
+  onDeviceReady(); //this is the browser
+}
+
+function onDeviceReady() {
+
+// lib require
 require(["jquery", "underscore", "moment", "fastclick", "App"],
 function( $,        _,            moment,   FastClick,   App) {
 
+  // remove 200ms delay on mobile click
   window.addEventListener('load', function() {
       FastClick.attach(document.body);
   }, false);
 
+  // app require
   require([
     "models/con",
     "models/events",
@@ -165,6 +177,8 @@ function( $,        _,            moment,   FastClick,   App) {
       }
     }
 
-  //
-  });
-});
+  }); // end app require
+
+}); // end lib require
+
+} // end onDeviceReady
