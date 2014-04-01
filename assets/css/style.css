@@ -366,6 +366,7 @@ nav ul li {
 }
 
 
+
 #schedule-list {
   padding: 4.5rem 0 0 0;
 }
@@ -533,11 +534,15 @@ nav ul li {
   list-style: none;
   margin: 0;
   padding: 0;
+  width: 75%;
 }
 #home-menu li {
   border-bottom: 1px solid #DDD;
+  float: left;
+  height: 8rem;
   list-style: none;
   margin: 0;
+  width: 33%;
 }
 #home-menu li a {
   display: block;
