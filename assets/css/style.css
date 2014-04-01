@@ -35,13 +35,6 @@ hr {
 .clear {
   clear: both;
 }
-/* for hiding and showing past events */
-.past {
-  display: none;
-}
-.past.unhide {
-  display: block;
-}
 .in-todo {
   display: none;
 }
@@ -75,6 +68,9 @@ nav ul li {
   text-align: center;
   text-shadow: -1px -1px rgba(0,0,0,0.5);
   width: 20rem;
+}
+.btn:active {
+  background: #234;
 }
 
 #loading {
@@ -128,6 +124,9 @@ nav ul li {
   padding: 0 2rem;
   text-decoration: none;
   text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+}
+#menu ul li a:active {
+  background: #41484F;
 }
 .btn-menu,
 .btn-search {
@@ -257,13 +256,14 @@ nav ul li {
 
 
 #search {
-  background: #FFF;
-  height: 4.4rem;
+  background-color: #FFF;
+  background-size: 3rem 3rem;
+  background-position: 1rem center;
+  background-repeat: no-repeat;
+  height: 4.5rem;
   outline: none;
   position: absolute;
-    top: 0;
     left: 0;
-    bottom: 0;
     right: 5rem;
   z-index: 5;
   transition-duration: 0.2s;
@@ -324,7 +324,7 @@ nav ul li {
 }
 
 .page {
-  background: #FFF;
+  background: #F8F8F8;
   box-sizing: border-box;
   font-size: 1.6rem;
   height: 100%;
@@ -350,6 +350,12 @@ nav ul li {
   font-size: 3rem;
   font-weight: 300;
   line-height: 3rem;
+}
+.page h2 {
+  color: #555;
+  font-size: 1.8rem;
+  font-weight: bold;
+  line-height: 2.4rem;
 }
 .page h4 {
   color: #777;
@@ -381,7 +387,7 @@ nav ul li {
 #schedule-list li.separator {
 }
 #schedule-list li.separator span {
-  background: #9AB;
+  background: #789;
   border-radius: 1rem;
   color: #FFF;
   display: block;
@@ -390,12 +396,8 @@ nav ul li {
   margin: 0.5rem;
   padding: 0.5rem 1rem;
 }
-#schedule .show-all {
-  color: #666;
-  font-size: 1.4rem;
-  line-height: 5rem;
-  margin-top: 4.5rem;
-  text-align: center;
+#schedule-list li.separator.past span {
+  opacity: 0.5;
 }
 .no-results {
   color: #666;
@@ -415,6 +417,13 @@ nav ul li {
   display: block;
   padding: 1.5rem;
   text-decoration: none;
+}
+.event-list li a:active {
+  background: #B1B3B5;
+  color: #FFF;
+}
+.event-list li.past a {
+  color: #999;
 }
 .event-list li a .title {
   display: block;
@@ -453,6 +462,22 @@ nav ul li {
 #event-guest-list li a {
   padding: 1rem;
 }
+#event-guest-list li a:active {
+  background: #B1B3B5;
+  color: #FFF;
+}
+#event-detail .event-feedback {
+  background: #DDD;
+  border-radius: 1rem;
+  border: 0;
+  color: #555;
+  display: block;
+  font-size: 1.2rem;
+  padding: 0.5rem 1.5rem;
+  margin: 3rem auto;
+  text-align: center;
+}
+#event-detail .event-feedback:active { background: #AAA; color: #FFF; }
 
 
 /* Guest list items */
@@ -486,6 +511,10 @@ nav ul li {
 .guest-list li a {
   display: block;
 }
+.guest-list li a:active {
+  background: #B1B3B5;
+  color: #FFF;
+}
 
 
 /* Guest detail */
@@ -506,6 +535,10 @@ nav ul li {
 }
 #guest-event-list li a {
   padding: 1rem;
+}
+#guest-event-list li a:active {
+  background: #B1B3B5;
+  color: #FFF;
 }
 #guest-event-list li a .time {
   display: block;
@@ -531,23 +564,46 @@ nav ul li {
 }
 
 #home-menu {
+  background: #FFF;
+  border-radius: 1rem;
+  box-shadow: 0 0 1rem rgba(0,0,0,0.1);
+  height: 9rem;
   list-style: none;
-  margin: 0;
+  margin: 0 5%;
   padding: 0;
-  width: 75%;
+  position: relative;
+    top: -1rem;
+  width: 90%;
 }
 #home-menu li {
-  border-bottom: 1px solid #DDD;
   float: left;
-  height: 8rem;
+  height: 100%;
   list-style: none;
   margin: 0;
   width: 33%;
 }
+#home-menu li:first-child { border-right: 1px solid #EEE; }
+#home-menu li:last-child  { border-left:  1px solid #EEE; }
 #home-menu li a {
   display: block;
+  color: #555;
+  font-size: 1.2rem;
+  line-height: 2rem;
   padding: 1rem;
+  text-align: center;
+  text-decoration: none;
 }
+#home-menu .icon {
+  display: block;
+  background-size: 100% 100%;
+  margin: 0 auto;
+  height: 5rem;
+  width: 5rem;
+}
+#home-menu .icon.icon-schedule { background-image: url("../images/icon-schedule.png"); }
+#home-menu .icon.icon-guests   { background-image: url("../images/icon-guests.png"); }
+#home-menu .icon.icon-hotelmap { background-image: url("../images/icon-map.png"); }
+
 #home .page-content {
   height: 100%;
   padding: 0;
@@ -557,12 +613,14 @@ nav ul li {
 /* Todo */
 
 #todo-list-title {
-  padding: 1.5rem 1.5rem 0.5rem 1.5rem;
+  clear: both;
   margin: 0;
+  padding: 1.5rem 1.5rem 0.5rem 1.5rem;
   text-transform: uppercase;
   font-size: 1.3rem;
 }
 #todo-list {
+  background: #FFF;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -592,6 +650,10 @@ nav ul li {
   display: block;
   padding: 1.5rem;
   text-decoration: none;
+}
+#todo-list li a:active {
+  background: #B1B3B5;
+  color: #FFF;
 }
 #todo-list li a .title {
   display: block;
@@ -634,3 +696,36 @@ nav ul li {
 .map-popup .place-subtitle.food     { color: #05F; }
 .map-popup .place-subtitle.shopping { color: #0B0; }
 .map-popup .place-subtitle.special  { color: #C35; }
+
+
+#feedback {
+}
+#feedback textarea#feedback-text {
+  border: 1px solid #DDD;
+  border-radius: 0.5rem;
+  box-sizing: border-box;
+  color: #444;
+  display: block;
+  font-size: 1.4rem;
+  min-height: 10rem;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  width: 100%;
+}
+#feedback-form h3 {
+  font-size: 1.6rem;
+  font-weight: 300;
+  margin: 1.5rem 0 0.5rem 0;
+}
+#feedback-subject {
+  background: none;
+  border: 0;
+  font-weight: bold;
+  line-height: 2rem;
+  padding: 0;
+  width: 100%;
+}
+#feedback-submit {
+  float: right;
+  width: 12rem;
+}

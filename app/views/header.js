@@ -6,17 +6,14 @@ return new App.View({
   events: {
     'click .menu-toggle': function(e) {
       e.preventDefault();
-      console.log("header toggle");
       menuView.$el.trigger('toggle');
     },
     'click .btn-back': function(e) {
       e.preventDefault();
-      console.log("header back");
       window.history.back();
     },
     'click .btn-search': function(e) {
       e.preventDefault();
-      console.log("Open search");
       var $s = this.$el.find('#search');
       if($s.hasClass('open')) {
         $s.find('input').blur();

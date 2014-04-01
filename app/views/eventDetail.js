@@ -1,4 +1,4 @@
-define(["App","jsrender"], function(App,jsrender) {
+define(["App","controllers/feedbackController","jsrender"], function(App, feedbackController, jsrender) {
 //
 
 return new App.View({
@@ -7,7 +7,7 @@ return new App.View({
   title: 'Event Detail',
   // custom methods
   render: function(item) {
-    console.log("rendering",item);
+    this.event_title = item.title;
 
     var t = this;
     t.$el.find('.page-content').html(

@@ -50,6 +50,7 @@ function( $,        _,            moment,   FastClick,   App) {
     "controllers/hotelMapController",
     "controllers/localMapController",
     "controllers/scheduleController",
+    "controllers/feedbackController",
     "views/menu",
     "views/localMap"
   ], function(
@@ -68,6 +69,7 @@ function( $,        _,            moment,   FastClick,   App) {
     hotelMapController,
     localMapController,
     scheduleController,
+    feedbackController,
     // global views
     menuView,
     localMapView
@@ -79,7 +81,6 @@ function( $,        _,            moment,   FastClick,   App) {
 
     // cached jquery
     var $loading = $('#loading');
-    var $toast   = $('#toast');
 
     window.app = new App({
       api_url: 'http://con-nexus.herokuapp.com/api',
@@ -126,7 +127,8 @@ function( $,        _,            moment,   FastClick,   App) {
           "guests"       : guestsController,
           "guest-detail" : guestDetailController,
           "local-map"    : localMapController,
-          "hotel-map"    : hotelMapController
+          "hotel-map"    : hotelMapController,
+          "feedback"     : feedbackController
         },
         onNavigate: function() {
           menuView.$el.trigger('close');
@@ -135,6 +137,16 @@ function( $,        _,            moment,   FastClick,   App) {
       app.router.start({
         context: app
       });
+    };
+
+    var $toast = $('#toast');
+    var toastTimeout;
+    app.toast = function(text) {
+      $toast.text(text).fadeIn();
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(function() {
+        $toast.fadeOut();
+      },3000);
     };
 
     app.checkConnection = function() {
@@ -150,24 +162,24 @@ function( $,        _,            moment,   FastClick,   App) {
       if(app.checkConnection()) {
         con.getBasic(con_model_params, function(server_data) {
           if(current_data.updated > server_data.updated) {
-            $toast.text("Found an update! Downloading convention data...").show();
+            app.toast("Found an update! Downloading convention data...");
             con.load(con_model_params, init);
           } else {
-            $toast.text("You're up to date!").show();
+            app.toast("You're up to date!");
             init(current_data);
           }
         });
       } else {
-        $toast.text("No network connection - using stored data").show();
+        app.toast("No network connection - using stored data");
         init(current_data);
       }
     };
 
     if(localStorage.getItem(LS_KEY_CON)) {
-      $toast.text("Checking for updated convention data...").show();
+      app.toast("Checking for updated convention data...");
       checkUpdated();
     } else {
-      $toast.text("Downloading convention data for the first time...").show();
+      app.toast("Downloading convention data for the first time...");
       if(app.checkConnection() || confirm("No connection found. You need an Internet connection to download convention data. Try anyway?")) {
         con.load(con_model_params, init);
       }

@@ -10,7 +10,6 @@ return new App.View({
     text = text.toLowerCase();
     console.log(text);
     var t = this;
-    t.$el.find('li.past').addClass('unhide');
     t.$el.find('li.event .time').show();
     t.$el.find('li.event').show().filter(function(i) {
       var t = $(this).text().toLowerCase();
@@ -26,46 +25,47 @@ return new App.View({
   clearFilter: function() {
     var t = this;
     t.$el.find('li').show();
-    t.$el.find('li.past').hide().removeClass('unhide');
     t.$el.find('li.event .time').hide();
     t.$el.find('.no-results').hide();
+    t.$el.scrollTop(t.nowPosition);
   },
   addSeparators: function(items) {
-    var arr = [];
+    var past, arr = [];
     items = this.model.sort(items);
     for(var i = 0; i < items.length; i++) {
+      //var now = new Date('2014-04-12 20:00:00');
+      var now = new Date();
+      past = new Date(items[i].datetime) < now;
+      items[i].past = past;
       if(i === 0 || (i > 0 && items[i].datetime > items[i-1].datetime)) {
-        arr.push({ type: "separator", datetime: items[i].datetime, fdate: moment(items[i].datetime).format("dddd h:mm a")});
+        separator = {
+          type: "separator",
+          datetime: items[i].datetime,
+          fdate: moment(items[i].datetime).format("dddd h:mm a"),
+          past: past
+        };
+        arr.push(separator);
       }
       arr.push(items[i]);
     }
-    console.log(arr);
     return arr;
+  },
+  gotoCurrentTime: function() {
+    var t = this;
   },
   render: function(model) {
     var t = this;
     t.model = model;
 
-    //var now = new Date('2013-06-28 20:01:00');
-    var now = new Date();
-    now.setHours(now.getHours()-1);
     var items = t.addSeparators(model.data);
     var visible = 0;
-    for(var i in items) {
-      if(now > new Date(items[i].datetime)) {
-        items[i].display = false;
-      } else {
-        items[i].display = true;
-        visible++;
-      }
-    }
-    if(visible === 0) {
-      t.$el.find('.show-all').show();
-    } else {
-      t.$el.find('.show-all').hide();
-    }
     var html = t.$template.render(items);
     t.$el.find('#schedule-list').html(html);
+
+    var $past = t.$el.find('.past');
+    // nowPosition is the scroll position of the last "past" item in the schedule
+    t.nowPosition = $past.length ? $past.last().offset().top : 0;
+    t.$el.scrollTop(t.nowPosition);
     return t;
   }
 });
