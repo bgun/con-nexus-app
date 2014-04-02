@@ -208,10 +208,10 @@ nav ul li {
   z-index: 2;
 }
 #header h1 {
-  color: #DDD;
+  color: #EEE;
   height: 100%;
-  font-size: 1.8rem;
-  font-weight: bold;
+  font-size: 2rem;
+  font-weight: 300;
   line-height: 4rem;
   margin: 2rem 0 0 0;
   padding: 0;
@@ -692,7 +692,7 @@ nav ul li {
 /* map stuff */
 
 .map-container {
-  background: #686;
+  background: #112;
   height: 100%;
   position: absolute;
   width: 100%;

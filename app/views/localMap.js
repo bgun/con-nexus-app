@@ -2,7 +2,7 @@ define(["App", "mapbox", "jsrender"], function(App, mapbox, jsrender) {
 //
 
 var popupOptions = {
-  autoPanPadding: [10,50]
+  autoPanPadding: [10,100]
 };
 
 return new App.View({
@@ -10,11 +10,11 @@ return new App.View({
   title: 'Local Map',
   init: function() {
     var t = this;
-    t.map = L.mapbox.map('local-map-container', 'bgun.map-0xo3jced',{
-      attributionControl: false,
-      detectRetina: true,
-      retinaVersion: 'bgun.map-0xo3jced'
-    });
+    t.map = L.map('local-map-container')
+      .addLayer(L.mapbox.tileLayer('bgun.map-0xo3jced', {
+        attributionControl: false,
+        detectRetina: true
+      }));
   },
   setView: function(center, zoom) {
     this.map.setView(center, zoom);
