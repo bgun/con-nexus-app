@@ -21,6 +21,9 @@ hr {
   padding: 0;
   width: 80%;
 }
+button {
+  font-family: "Helvetica Neue", sans-serif;
+}
 
 * {
   outline: none;
@@ -220,67 +223,39 @@ nav ul li {
   z-index: 1;
 }
 #header .btn-back {
-  background: #EEE;
-  border: 1px solid #555;
-  border-radius: 0 0.5rem 0.5rem 0;
+  background-color: transparent;
+  background-image: url("../images/icon-arrow-back-dddddd.svg");
+  background-size: 2rem 2rem;
+  background-position: left center;
+  background-repeat: no-repeat;
+  border: none;
+  color: #FFF;
   display: block;
+  font-size: 1.5rem;
+  font-weight: 300;
   height: 3rem;
+  line-height: 3rem;
+  padding-left: 1.5rem;
   position: absolute;
     top: 2.5rem;
-    left: 2rem;
-  width: 5rem;
+    left: 0.5rem;
+  width: 8rem;
 }
-#header .btn-back span {
-  background: #EEE;
-  border: 1px solid #555;
-  border-radius: 0.2rem;
-  display: block;
-  height: 2.2rem;
-  position: absolute;
-    left: -1.2rem;
-    top: 0.3rem;
-  width: 2.2rem;
-  -webkit-transform: rotate(45deg);
-  z-index: 1;
-}
-#header .btn-back label {
-  background: #EEE;
-  border-radius: 0 0.5rem 0.5rem 0;
-  color: #444;
-  cursor: pointer;
-  font-size: 1.3rem;
-  font-weight: bold;
-  line-height: 3rem;
-  margin: 0;
-  padding: 0;
-  position: absolute;
-    top: 0;
-    right: 0;
-  text-align: center;
-  text-decoration: none;
-  text-shadow: 1px 1px 1px #CCC;
-  width: 100%;
-  z-index: 2;
-}
-#header .btn-back:active,
-#header .btn-back:active span,
-#header .btn-back:active label {
-  background: #CCC;
+#header .btn-back:active {
+  opacity: 0.7;
 }
 
 
 #search {
   background-color: #FFF;
+  background-image: url("../images/icon-search-dddddd.svg");
   background-size: 3rem 3rem;
   background-position: 1rem center;
   background-repeat: no-repeat;
-  height: 4rem;
+  height: 5rem;
+  margin: 6rem 0 0 0;
   outline: none;
-  position: absolute;
-    top: 2rem;
-    left: 0;
-    right: 5rem;
-  z-index: 5;
+  /*
   transition-duration: 0.2s;
   -webkit-transition-duration: 0.2s;
   transition-property: transform;
@@ -288,26 +263,27 @@ nav ul li {
   transform: translate3d(-100%,0,0);
   -webkit-transform: translate3d(-100%,0,0);
   -webkit-backface-visibility: hidden;
+  */
 }
+/*
 #search.open {
   transform: translate3d(0,0,0);
   -webkit-transform: translate3d(0,0,0);
 }
+*/
 #search input {
-  background: #FFF;
+  background: none;
   border: 0;
   box-sizing: border-box;
   color: #AAA;
+  display: block;
   font-family: "Helvetica Neue", sans-serif;
   font-size: 1.4rem;
   font-weight: 300;
-  height: 100%;
-  min-width: 66%;
-  padding: 0;
-  position: absolute;
-    top: 0;
-    left: 5rem;
-    right: 5rem;
+  height: 5rem;
+  outline: none;
+  padding: 0 0 0 5rem;
+  width: 100%;
 }
 #search input:focus {
   outline: none;
@@ -389,7 +365,7 @@ nav ul li {
 
 
 #schedule-list {
-  padding: 6rem 0 4rem 0;
+  padding: 0 0 4rem 0;
 }
 #schedule-list li {
   border-top: 1px solid #DDD;
@@ -400,6 +376,7 @@ nav ul li {
   background: #EEE;
 }
 #schedule-list li.separator {
+  background: #F8F8F8;
 }
 #schedule-list li.separator span {
   background: #797;
@@ -426,6 +403,11 @@ nav ul li {
   margin: 2.5rem 0 2.5rem 0;
   margin: 0;
   padding: 0;
+}
+.event-list li {
+  background: #FFF;
+  border-left: 1px solid #DDD;
+  border-right: 1px solid #DDD;
 }
 .event-list li a {
   color: #333;
@@ -508,7 +490,7 @@ nav ul li {
 #guests-all {
   padding: 6rem 0 4rem 0;
 }
-#guests-all .guest-title {
+.guest-title {
   color: #A35;
   font-size: 1.2rem;
   font-weight: bold;
@@ -520,7 +502,10 @@ nav ul li {
   padding: 0;
 }
 .guest-list li {
+  background: #FFF;
   border-top: 1px solid #DDD;
+  border-left: 1px solid #DDD;
+  border-right: 1px solid #DDD;
   list-style: none;
   margin: 0;
   padding: 0;

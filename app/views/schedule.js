@@ -6,6 +6,16 @@ return new App.View({
   template: 'schedule-item-template',
   title: 'Schedule',
   // custom methods
+  events: {
+    'keyup .search-input': function(e) {
+      var text = $(e.target).val();
+      if(text.length > 0) {
+        this.filter(text);
+      } else {
+        this.clearFilter();
+      }
+    }
+  },
   filter: function(text) {
     text = text.toLowerCase();
     console.log(text);

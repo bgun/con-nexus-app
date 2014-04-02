@@ -11,7 +11,8 @@ return new App.View({
     'click .btn-back': function(e) {
       e.preventDefault();
       window.history.back();
-    },
+    }
+    /*
     'click .btn-search': function(e) {
       e.preventDefault();
       var $s = this.$el.find('#search');
@@ -28,14 +29,7 @@ return new App.View({
       var $i = $(e.target);
       $i.find('input').blur().focus();
     },
-    'keyup .search-input': function(e) {
-      var text = $(e.target).val();
-      if(text.length > 0) {
-        scheduleView.filter(text);
-      } else {
-        scheduleView.clearFilter();
-      }
-    }
+    */
   },
   // custom methods
   setTitle: function(title) {
