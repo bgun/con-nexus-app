@@ -55,8 +55,8 @@
       </ul>
       <h4 id="todo-list-title">My Todo List</h4>
       <ul id="todo-list">
-        <li class="no-results">Your todo list is empty.</li>
       </ul>
+      <div id="todo-empty" class="no-results">Your todo list is empty.<br />View the Schedule and add some!</div>
     </section>
   </div>
 
@@ -150,7 +150,7 @@
   {{if type && type == "separator"}}
   <li class="separator {{if past}}past{{/if}}"><span>{{:fdate}}</span></li>
   {{else}}
-  <li class="event {{if past}}past{{/if}}">
+  <li class="event {{if todo}}todo{{/if}} {{if past}}past{{/if}}">
     <a href="#event-detail/{{:event_id}}" data-event-id="{{:event_id}}">
       <span class="title">{{:title}}</span>
       <span class="time">{{:fdate}}</span>

@@ -75,7 +75,7 @@ nav ul li {
 
 #loading {
   background: #000;
-  background-image: url("./assets/images/loading.gif");
+  background-image: url("../images/loading.gif");
   background-position: center center;
   background-repeat: no-repeat;
   height: 100%;
@@ -440,6 +440,13 @@ nav ul li {
 .event-list li.past a {
   color: #999;
 }
+.event-list li.todo {
+  background-color: #DFD;
+  background-image: url("../images/todo-check.svg");
+  background-position: 97% center;
+  background-size: 3rem 3rem;
+  background-repeat: no-repeat;
+}
 .event-list li a .title {
   display: block;
   font-size: 1.6rem;
@@ -679,6 +686,13 @@ nav ul li {
 }
 .remove-todo {
   background: #123;
+}
+#todo-empty {
+  border-top: 1px solid #DDD;
+  display: none;
+  font-size: 1.4rem;
+  line-height: 1.5rem;
+  padding: 1rem 0;
 }
 
 

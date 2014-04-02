@@ -7,7 +7,8 @@ define(["views/header", "views/schedule"], function(headerView, scheduleView) {
     headerView.setTitle(scheduleView.title);
 
     var model = this.models.events;
-    scheduleView.render(model);
+    var todo  = this.models.todo;
+    scheduleView.render(model, todo);
     scheduleView.show();
   };
 

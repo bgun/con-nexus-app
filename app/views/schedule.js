@@ -30,13 +30,15 @@ return new App.View({
     t.$el.scrollTop(t.nowPosition);
   },
   addSeparators: function(items) {
+    var t = this;
     var past, arr = [];
-    items = this.model.sort(items);
+    items = t.model.sort(items);
     for(var i = 0; i < items.length; i++) {
       //var now = new Date('2014-04-12 20:00:00');
       var now = new Date();
       past = new Date(items[i].datetime) < now;
       items[i].past = past;
+      items[i].todo = (t.todo.data.indexOf(items[i].event_id) > -1);
       if(i === 0 || (i > 0 && items[i].datetime > items[i-1].datetime)) {
         separator = {
           type: "separator",
@@ -53,9 +55,10 @@ return new App.View({
   gotoCurrentTime: function() {
     var t = this;
   },
-  render: function(model) {
+  render: function(model, todo) {
     var t = this;
     t.model = model;
+    t.todo = todo;
 
     var items = t.addSeparators(model.data);
     var visible = 0;
