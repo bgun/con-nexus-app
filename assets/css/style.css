@@ -57,8 +57,8 @@ nav ul li {
 }
 
 .btn {
-  background: #486876;
-  border: 2px solid #355360;
+  background: #2c4f01;
+  border: 2px solid #240;
   border-radius: 2rem;
   color: #FFF;
   font-size: 1.3rem;
@@ -70,7 +70,7 @@ nav ul li {
   width: 20rem;
 }
 .btn:active {
-  background: #234;
+  background: #240;
 }
 
 #loading {
@@ -116,7 +116,7 @@ nav ul li {
 
 
 #menu {
-  background: #293a41;
+  background: #243d00;
   height: 100%;
   position: fixed;
     top: 0;
@@ -128,7 +128,7 @@ nav ul li {
   margin-top: 5rem;
 }
 #menu ul li {
-  border-bottom: 1px solid #455;
+  border-bottom: 1px solid #353;
 }
 #menu ul li a {
   color: #EEE;
@@ -141,7 +141,7 @@ nav ul li {
   text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
 }
 #menu ul li a:active {
-  background: #41484F;
+  background: rgba(255,255,255,0.1);
 }
 .btn-menu,
 .btn-search {
@@ -190,7 +190,7 @@ nav ul li {
 }
 
 #header {
-  background: rgba(41,58,65,0.9);
+  background: rgba(47,84,1,0.9);
   height: 6rem;
   position: absolute;
     top: 0;
@@ -402,7 +402,7 @@ nav ul li {
 #schedule-list li.separator {
 }
 #schedule-list li.separator span {
-  background: #789;
+  background: #797;
   border-radius: 1rem;
   color: #FFF;
   display: block;
@@ -498,6 +498,7 @@ nav ul li {
   padding: 0.5rem 1.5rem;
   margin: 3rem auto;
   text-align: center;
+  text-decoration: none;
 }
 #event-detail .event-feedback:active { background: #AAA; color: #FFF; }
 
@@ -505,7 +506,7 @@ nav ul li {
 /* Guest list items */
 
 #guests-all {
-  padding: 6rem 0 0 4rem 0;
+  padding: 6rem 0 4rem 0;
 }
 #guests-all .guest-title {
   color: #A35;
@@ -574,7 +575,7 @@ nav ul li {
   background-position: center center;
   background-repeat: no-repeat;
   background-size: 100% auto;
-  height: 40%;
+  height: 55%;
   position: relative;
 }
 #hero-photo .logo {
@@ -614,6 +615,9 @@ nav ul li {
   padding: 1rem;
   text-align: center;
   text-decoration: none;
+}
+#home-menu li a:active {
+  background: #EEE;
 }
 #home-menu .icon {
   display: block;
@@ -685,7 +689,7 @@ nav ul li {
   font-size: 1.2rem;
 }
 .remove-todo {
-  background: #123;
+  background: #130;
 }
 #todo-empty {
   border-top: 1px solid #DDD;
@@ -700,7 +704,7 @@ nav ul li {
 /* map stuff */
 
 .map-container {
-  background: #AAA;
+  background: #686;
   height: 100%;
   position: absolute;
   width: 100%;

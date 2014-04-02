@@ -177,30 +177,38 @@ function( $,        _,            moment,   FastClick,   App) {
 
     var checkUpdated = function() {
       var current_data = JSON.parse(localStorage.getItem(LS_KEY_CON));
-      if(app.online) {
-        con.getBasic(con_model_params, function(server_data) {
+      con.getBasic({
+        params: con_model_params,
+        success: function(server_data) {
           if(server_data.updated > current_data.updated) {
-            app.toast("Found an update! Downloading convention data...");
+            app.toast("Found an update! Downloading convention data...",20000);
             con.load(con_model_params, init);
           } else {
             app.toast("You're up to date!");
             init(current_data);
           }
-        });
-      } else {
-        app.toast("No network connection - using stored data");
-        init(current_data);
-      }
+        },
+        error: function() {
+          app.toast("No network connection - using stored data");
+          init(current_data);
+        }
+      });
     };
 
-    if(localStorage.getItem(LS_KEY_CON)) {
-      app.toast("Checking for updated convention data...");
+    if(app.online && localStorage.getItem(LS_KEY_CON)) {
+      app.toast("Checking for updated convention data...",10000);
       checkUpdated();
+    } else if(app.online) {
+      // online but no cached data
+      app.toast("Downloading convention data for the first time...",20000);
+      con.load(con_model_params, init);
+    } else if(localStorage.getItem(LS_KEY_CON)) {
+      // offline but we have a cache
+      app.toast("No network connection - using stored data");
+      init(current_data);
     } else {
-      app.toast("Downloading convention data for the first time...");
-      if(app.online || confirm("No connection found. You need an Internet connection to download convention data. Try anyway?")) {
-        con.load(con_model_params, init);
-      }
+      // offline, no cache
+      app.toast("You need an Internet connection to download convention data for the first time.");
     }
 
   }); // end app require
