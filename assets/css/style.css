@@ -78,7 +78,7 @@ nav ul li {
 
 #loading {
   background: #000;
-  background-image: url("../images/loading.gif");
+  background-size: 100% 100%;
   background-position: center center;
   background-repeat: no-repeat;
   height: 100%;
@@ -87,6 +87,18 @@ nav ul li {
     left: 0;
   width: 100%;
   z-index: 1000;
+}
+#loading .spinner {
+  background: url("../images/loading.gif");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  display: block;
+  height: 6rem;
+  margin: 60% 50%;
+  position: relative;
+    top: -3rem;
+    left: -3rem;
+  width: 6rem;
 }
 #toast {
   background: rgba(30,30,30,0.95);

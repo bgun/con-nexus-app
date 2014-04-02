@@ -169,7 +169,7 @@ function( $,        _,            moment,   FastClick,   App) {
       if(url.indexOf('http') === 0) {
         e.preventDefault();
         e.stopPropagation();
-        if(confirm("Open "+url+" in external browser?")) {
+        if(confirm("Open "+url+" in your browser?")) {
           window.open(url, '_system', 'location=yes');
         }
       }
