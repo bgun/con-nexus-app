@@ -75,7 +75,7 @@ nav ul li {
 
 #loading {
   background: #000;
-  background-image: url("/assets/images/loading.gif");
+  background-image: url("./assets/images/loading.gif");
   background-position: center center;
   background-repeat: no-repeat;
   height: 100%;
@@ -97,6 +97,21 @@ nav ul li {
   text-align: center;
   width: 70%;
   z-index: 1001;
+}
+#network-offline {
+  background: rgba(200,0,0,0.95);
+  color: #FFF;
+  display: none;
+  font-size: 1.3rem;
+  font-weight: bold;
+  height: 3rem;
+  line-height: 3rem;
+  position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  text-align: center;
+  z-index: 999;
 }
 
 
@@ -363,7 +378,7 @@ nav ul li {
   text-transform: uppercase;
 }
 .page .page-content {
-  padding: 6rem 1.5rem 1.5rem 1.5rem;
+  padding: 6rem 1.5rem 4rem 1.5rem;
 }
 .page.active {
   transform: translate3d(0,0,0);
@@ -374,7 +389,7 @@ nav ul li {
 
 
 #schedule-list {
-  padding: 6rem 0 0 0;
+  padding: 6rem 0 4rem 0;
 }
 #schedule-list li {
   border-top: 1px solid #DDD;
@@ -483,7 +498,7 @@ nav ul li {
 /* Guest list items */
 
 #guests-all {
-  padding-top: 6rem;
+  padding: 6rem 0 0 4rem 0;
 }
 #guests-all .guest-title {
   color: #A35;

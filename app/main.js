@@ -81,6 +81,7 @@ function( $,        _,            moment,   FastClick,   App) {
 
     // cached jquery
     var $loading = $('#loading');
+    var $networkOffline = $('#network-offline');
 
     window.app = new App({
       api_url: 'http://con-nexus.herokuapp.com/api',
@@ -91,9 +92,11 @@ function( $,        _,            moment,   FastClick,   App) {
     app.online = true;
     document.addEventListener('online',function() {
       app.online = true;
+      $networkOffline.fadeOut();
     }, false);
     document.addEventListener('offline',function() {
       app.online = false;
+      $networkOffline.fadeIn();
     }, false);
 
     // so our controllers can access these later
