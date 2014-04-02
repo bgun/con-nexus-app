@@ -166,8 +166,9 @@ function( $,        _,            moment,   FastClick,   App) {
       if(url.indexOf('http') === 0) {
         e.preventDefault();
         e.stopPropagation();
-        alert(url);
-        window.open(url, '_system', 'location=yes');
+        if(confirm("Open "+url+" in external browser?")) {
+          window.open(url, '_system', 'location=yes');
+        }
       }
     });
 
