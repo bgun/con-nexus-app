@@ -235,11 +235,13 @@ nav ul li {
   font-weight: 300;
   height: 3rem;
   line-height: 3rem;
-  padding-left: 1.5rem;
+  padding: 0 0 0 2.5rem;
   position: absolute;
     top: 2.5rem;
     left: 0.5rem;
+  text-align: left;
   width: 8rem;
+  z-index: 2;
 }
 #header .btn-back:active {
   opacity: 0.7;
@@ -393,6 +395,7 @@ nav ul li {
 }
 .no-results {
   color: #666;
+  display: none;
   font-size: 1.8rem;
   line-height: 5rem;
   text-align: center;
