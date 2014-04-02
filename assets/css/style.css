@@ -662,6 +662,9 @@ nav ul li {
 #todo-list li a .time {
   font-size: 1.2rem;
 }
+.remove-todo {
+  background: #123;
+}
 
 
 

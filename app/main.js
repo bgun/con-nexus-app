@@ -87,6 +87,15 @@ function( $,        _,            moment,   FastClick,   App) {
       con_id: "jcon2014"
     });
 
+    // network check
+    app.online = true;
+    document.addEventListener('online',function() {
+      app.online = true;
+    }, false);
+    document.addEventListener('offline',function() {
+      app.online = false;
+    }, false);
+
     // so our controllers can access these later
     app.models = {
       con:    con,
@@ -141,27 +150,32 @@ function( $,        _,            moment,   FastClick,   App) {
 
     var $toast = $('#toast');
     var toastTimeout;
-    app.toast = function(text) {
+    app.toast = function(text, delay) {
+      if(!delay) {
+        delay = 3000;
+      }
       $toast.text(text).fadeIn();
       clearTimeout(toastTimeout);
       toastTimeout = setTimeout(function() {
         $toast.fadeOut();
-      },3000);
+      },delay);
     };
 
-    app.checkConnection = function() {
-      if(!navigator.connection) {
-        return false;
+    $('#pages').on('click','a',function(e) {
+      var url = $(this).attr('href');
+      if(url.indexOf('http') === 0) {
+        e.preventDefault();
+        e.stopPropagation();
+        alert(url);
+        window.open(url, '_system', 'location=yes');
       }
-      var conn = navigator.connection.type != Connection.NONE;
-      return conn;
-    };
+    });
 
     var checkUpdated = function() {
       var current_data = JSON.parse(localStorage.getItem(LS_KEY_CON));
-      if(app.checkConnection()) {
+      if(app.online) {
         con.getBasic(con_model_params, function(server_data) {
-          if(current_data.updated > server_data.updated) {
+          if(server_data.updated > current_data.updated) {
             app.toast("Found an update! Downloading convention data...");
             con.load(con_model_params, init);
           } else {
@@ -180,7 +194,7 @@ function( $,        _,            moment,   FastClick,   App) {
       checkUpdated();
     } else {
       app.toast("Downloading convention data for the first time...");
-      if(app.checkConnection() || confirm("No connection found. You need an Internet connection to download convention data. Try anyway?")) {
+      if(app.online || confirm("No connection found. You need an Internet connection to download convention data. Try anyway?")) {
         con.load(con_model_params, init);
       }
     }
