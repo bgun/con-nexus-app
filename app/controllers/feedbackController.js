@@ -5,7 +5,7 @@ return function(subject) {
   var t = this;
 
   headerView.$el.find('.btn-back').show();
-  headerView.hideSearch();
+  headerView.toggleSearch(false);
   headerView.setTitle(feedbackView.title);
 
   feedbackView.render(subject);

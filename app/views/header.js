@@ -11,6 +11,14 @@ return new App.View({
     'click .btn-back': function(e) {
       e.preventDefault();
       window.history.back();
+    },
+    'keyup .search-input': function(e) {
+      var text = $(e.target).val();
+      if(text.length > 0) {
+        scheduleView.filter(text);
+      } else {
+        scheduleView.clearFilter();
+      }
     }
     /*
     'click .btn-search': function(e) {
@@ -35,9 +43,8 @@ return new App.View({
   setTitle: function(title) {
     this.$el.find('h1').text(title);
   },
-  hideSearch: function() {
-    this.$el.find('.btn-search').hide();
-    this.$el.find('#search').removeClass('open');
+  toggleSearch: function(bool) {
+    this.$el.find('#search').toggle(bool);
   }
 });
 

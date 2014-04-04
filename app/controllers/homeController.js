@@ -3,7 +3,7 @@ define(["views/header","views/home"], function(headerView, homeView) {
 
   return function() {
     headerView.$el.find('.btn-back').hide();
-    headerView.hideSearch();
+    headerView.toggleSearch(false);
     headerView.setTitle(homeView.title);
 
     todoArray = this.models.todo.data;

@@ -6,7 +6,7 @@ return function(id) {
   var item = t.models.events.getById(id);
 
   headerView.$el.find('.btn-back').show();
-  headerView.hideSearch();
+  headerView.toggleSearch(false);
   headerView.setTitle(eventDetailView.title);
 
   scheduleView.clearFilter();

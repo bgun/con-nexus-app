@@ -6,7 +6,7 @@ return function(id) {
   var item = t.models.guests.getById(id);
 
   headerView.$el.find('.btn-back').show();
-  headerView.hideSearch();
+  headerView.toggleSearch(false);
   headerView.setTitle(guestDetailView.title);
 
   guestDetailView.render(item);
