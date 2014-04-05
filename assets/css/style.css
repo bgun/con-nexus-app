@@ -90,15 +90,15 @@ nav ul li {
 }
 #loading .spinner {
   background: url("../images/loading.gif");
-  background-size: 100% 100%;
+  background-position: center center;
   background-repeat: no-repeat;
   display: block;
-  height: 6rem;
+  height: 8rem;
   margin: 60% 50%;
   position: relative;
-    top: -3rem;
-    left: -3rem;
-  width: 6rem;
+    top: -4rem;
+    left: -4rem;
+  width: 8rem;
 }
 #toast {
   background: rgba(30,30,30,0.95);
@@ -266,7 +266,8 @@ nav ul li {
   background-size: 3rem 3rem;
   background-position: 1rem center;
   background-repeat: no-repeat;
-  box-shadow: inset 0 -3px 6px #EEE;
+  border-bottom: 1px solid #DDD;
+  box-shadow: inset 0 -4px 8px #EEE;
   height: 5rem;
   margin: 6rem 0 0 0;
   outline: none;

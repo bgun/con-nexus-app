@@ -29,10 +29,11 @@ define(['App'], function(App) {
         });
       }
     },
-    render: function(subject) {
-      if(!subject) subject = "JordanCon";
+    render: function(ev) {
+      var title = "JordanCon";
+      if(ev) title = ev.title;
       this.$el.find('#feedback-text').val('');
-      this.$el.find('#feedback-subject').text(subject);
+      this.$el.find('#feedback-subject').text(title);
     }
   });
 
