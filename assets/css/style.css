@@ -435,7 +435,7 @@ nav ul li {
   text-decoration: none;
 }
 .event-list li a:active {
-  background: #B1B3B5;
+  background: #EEE;
   color: #FFF;
 }
 .event-list li.past a {
@@ -486,7 +486,7 @@ nav ul li {
   padding: 1rem;
 }
 #event-guest-list li a:active {
-  background: #B1B3B5;
+  background: #EEE;
   color: #FFF;
 }
 #event-detail .event-feedback {
@@ -539,7 +539,7 @@ nav ul li {
   display: block;
 }
 .guest-list li a:active {
-  background: #B1B3B5;
+  background: #EEE;
   color: #FFF;
 }
 
@@ -564,7 +564,7 @@ nav ul li {
   padding: 1rem;
 }
 #guest-event-list li a:active {
-  background: #B1B3B5;
+  background: #EEE;
   color: #FFF;
 }
 #guest-event-list li a .time {

@@ -164,12 +164,20 @@ function( $,        _,            moment,   FastClick,   App) {
       },delay);
     };
 
+    app.confirm = function(msg, callback, title) {
+      if(navigator.notifications) {
+        return navigator.notifications.confirm(msg, callback, title);
+      } else {
+        return confirm(msg);
+      }
+    };
+
     $('#pages').on('click','a',function(e) {
       var url = $(this).attr('href');
       if(url.indexOf('http') === 0) {
         e.preventDefault();
         e.stopPropagation();
-        if(confirm("Open "+url+" in your browser?")) {
+        if(app.confirm("Open "+url+" in your browser?", null, "External Link")) {
           window.open(url, '_system', 'location=yes');
         }
       }
