@@ -131,8 +131,8 @@
 
 <script id="event-detail-template" type="x-jquery-tmpl">
   <h1 class="event-title">{{:title}}</h1>
+  <span class="event-date">{{:fdate}}</span><br />
   <span class="event-location">{{:location}}</span>
-  <span class="event-date">{{:fdate}}</span>
   <p class="event-description">{{:description}}</p>
   <button type="button" class="btn btn-todo remove-todo {{if !inTodo}}hidden{{/if}}" data-event-id="{{:event_id}}">Remove from My Todo</button>
   <button type="button" class="btn btn-todo add-todo    {{if inTodo }}hidden{{/if}}" data-event-id="{{:event_id}}">Add to My Todo</button>
@@ -180,7 +180,7 @@
     <h2 class="place-name">{{:name}}</h2>
     <h3 class="place-subtitle {{:icon}}">{{:subtitle}}</h3>
     <address>{{:address}}<br />{{:city}}, {{:state}} {{:zip}}</address><br />
-    <span class="phone">{{:phone}}</span>
+    <a href="tel:{{:formatted_phone}}" class="phone">{{:phone}}</a>
   </div>
 </script>
 

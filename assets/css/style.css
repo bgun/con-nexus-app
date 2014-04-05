@@ -469,11 +469,13 @@ nav ul li {
   color: #888;
   font-size: 1.4rem;
   font-weight: bold;
+  line-height: 2rem;
   text-transform: uppercase;
 }
 #event-detail .event-date {
   font-size: 1.5rem;
   font-style: italic;
+  line-height: 2rem;
 }
 #event-detail .event-description {
   font-size: 1.4rem;
@@ -731,6 +733,9 @@ nav ul li {
   margin: 0 0 1rem 0;
   padding: 0;
   text-transform: uppercase;
+}
+.map-popup .phone {
+  font-size: 1.6rem;
 }
 .map-popup .place-subtitle.beer     { color: #F50; }
 .map-popup .place-subtitle.food     { color: #05F; }
