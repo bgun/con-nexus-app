@@ -2,7 +2,7 @@ define(["views/header","views/schedule","views/about"], function(headerView, sch
 //
 
 return function() {
-  headerView.$el.find('.btn-back').hide();
+  headerView.$el.find('.btn-back').show();
   headerView.toggleSearch(false);
   headerView.setTitle(aboutView.title);
 

@@ -12,7 +12,8 @@ return new App.Model({
     // sort by date
     return items.sort(function(a,b) {
       if(!a.datetime || !b.datetime) {
-        throw new Error("no date in event - something is very wrong");
+        console.log("No date in event - something is very wrong");
+        return 0;
       }
       if(a.datetime > b.datetime) return 1;
       if(a.datetime < b.datetime) return -1;
@@ -25,15 +26,19 @@ return new App.Model({
         return this.data[i];
       }
     }
-    console.log("ERROR: event lookup failed. Why wasn't the ID found?");
+    console.log("Event lookup failed (\""+id+"\"). ID may have been deleted");
   },
   getById: function(id) {
     var t = this;
+    var evt;
     // id can be a single id or an array
     if(_.isArray(id)) {
       var arr = [];
       for(var i in id) {
-        arr.push(t.lookupById(id[i]));
+        evt = t.lookupById(id[i]);
+        if(evt) {
+          arr.push(evt);
+        }
       }
       return t.sort(arr);
     } else {
