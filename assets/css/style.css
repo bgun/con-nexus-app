@@ -28,6 +28,10 @@ button {
 * {
   outline: none;
 }
+*:not(input):not(textarea) {
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}    
 
 .hide {
   display: none !important;
@@ -330,6 +334,18 @@ nav ul li {
 #pages.menu-open {
   transform: translate3d(-18rem,0,0);
   -webkit-transform: translate3d(-18rem,0,0);
+}
+#pages .menu-close-overlay {
+  background: transparent;
+  cursor: pointer;
+  display: none;
+  height: 100%;
+  position: absolute;
+  width: 100%;
+  z-index: 900;
+}
+#pages.menu-open .menu-close-overlay {
+  display: block;
 }
 
 .page {

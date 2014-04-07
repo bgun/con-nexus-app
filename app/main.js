@@ -151,6 +151,7 @@ function( $,        _,            moment,   FastClick,   App) {
       });
     };
 
+    var $pages = $('#pages');
     var $toast = $('#toast');
     var toastTimeout;
     app.toast = function(text, delay) {
@@ -172,7 +173,7 @@ function( $,        _,            moment,   FastClick,   App) {
       }
     };
 
-    $('#pages').on('click','a',function(e) {
+    $pages.on('click','a',function(e) {
       var url = $(this).attr('href');
       if(url.indexOf('http') === 0) {
         e.preventDefault();
@@ -181,6 +182,12 @@ function( $,        _,            moment,   FastClick,   App) {
           window.open(url, '_system', 'location=yes');
         }
       }
+    });
+
+    $pages.on('click','.menu-close-overlay',function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      $pages.removeClass('menu-open');
     });
 
     var checkUpdated = function() {
