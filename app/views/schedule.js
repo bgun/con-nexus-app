@@ -70,15 +70,18 @@ return new App.View({
     t.model = model;
     t.todo = todo;
 
+    var $past;
     var items = t.addSeparators(model.data);
     var visible = 0;
     var html = t.$template.render(items);
     t.$el.find('#schedule-list').html(html);
 
-    var $past = t.$el.find('.past');
+    /*
+    $past = t.$el.find('.past');
     // nowPosition is the scroll position of the last "past" item in the schedule
     t.nowPosition = $past.length ? $past.last().offset().top : 0;
     t.$el.scrollTop(t.nowPosition);
+    */
     return t;
   }
 });

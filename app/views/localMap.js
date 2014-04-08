@@ -20,11 +20,9 @@ return new App.View({
     this.map.setView(center, zoom);
   },
   renderMarkers: function(places, con_id) {
-    console.log("places",places);
     var t = this;
     var marker;
     _.each(places, function(m) {
-      console.log(m);
       var icon = L.icon({
         iconUrl: "./assets/"+con_id+"/map_marker_"+m.icon+".png",
         iconSize: [50,63],

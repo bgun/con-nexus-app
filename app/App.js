@@ -39,7 +39,7 @@ App.View = function(options) {
     if(t.events.hasOwnProperty(ev)) {
       parts = ev.split(" ");
       evname = parts.shift();
-      sel = parts.join(" ");
+      sel = parts.join(" ").trim();
       setEvent(ev, sel, t.events[ev]);
     }
   }
