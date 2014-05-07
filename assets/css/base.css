@@ -153,11 +153,17 @@ nav ul li {
   color: #EEE;
   display: block;
   font-size: 1.6rem;
-  height: 5rem;
-  line-height: 5rem;
-  padding: 0 2rem;
+  padding: 1.6rem 2rem;
   text-decoration: none;
   text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+  vertical-align: top;
+}
+#menu ul li a .menu-icon {
+  background: #000;
+  display: inline-block;
+  height: 1.8rem;
+  margin-right: 1.4rem;
+  width: 1.8rem;
 }
 #menu ul li a:active {
   background: rgba(255,255,255,0.1);

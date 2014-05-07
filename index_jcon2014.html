@@ -9,12 +9,11 @@
   <script data-main="app/main" src="lib/require.js"></script>
 
   <link rel="stylesheet" href="./assets/css/mapbox.css" />
-  <link rel="stylesheet" href="./assets/css/base.css" />
-  <link rel="stylesheet" href="./assets/libertycon2014/libertycon2014.css" />
+  <link rel="stylesheet" href="./assets/css/style.css" />
 </head>
 <body>
 
-<div id="loading" style="background-image: url('./assets/libertycon2014/loading-background.jpg');"><span class="spinner"></span></div>
+<div id="loading" style="background-image: url('./assets/jcon2014/loading-background.jpg');"><span class="spinner"></span></div>
 <div id="toast">Loading...</div>
 <div id="network-offline">Network Offline</div>
 
@@ -47,7 +46,9 @@
   <!-- Pages -->
   <div id="home" class="page">
     <section class="page-content home-page-content">
-      <div id="hero-photo" style="background-image: url('./assets/libertycon2014/cover01.jpg');"></div>
+      <div id="hero-photo" style="background-image: url('./assets/jcon2014/cover01.jpg');">
+        <img class="logo" src="./assets/jcon2014/logo.png" />
+      </div>
       <ul id="home-menu">
         <li><a href="#schedule" ><span class="icon icon-schedule"></span>Schedule</a></li>
         <li><a href="#guests"   ><span class="icon icon-guests"  ></span>Guests</a></li>
@@ -111,7 +112,7 @@
   </div>
 
   <div id="hotel-map" class="page">
-    <div id="hotel-map-container" data-map-url="./assets/libertycon2014/hotelmap.jpg" class="map-container"></div>
+    <div id="hotel-map-container" data-map-url="./assets/jcon2014/2014HotelMap_web.jpg" class="map-container"></div>
   </div>
 
   <div id="feedback" class="page">
