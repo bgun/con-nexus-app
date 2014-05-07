@@ -474,6 +474,11 @@ nav ul li {
   display: block;
   font-size: 1.6rem;
 }
+.event-list li a .location {
+  display: block;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
 .event-list li a .time {
   display: none;
   font-size: 1.2rem;
