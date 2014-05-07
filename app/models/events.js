@@ -17,6 +17,10 @@ return new App.Model({
       }
       if(a.datetime > b.datetime) return 1;
       if(a.datetime < b.datetime) return -1;
+      if(a.datetime === b.datetime) {
+        if(a.title > b.title) return 1;
+        if(a.title < b.title) return -1;
+      }
       return 0;
     });
   },
