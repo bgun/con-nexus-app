@@ -1,6 +1,4 @@
 node_modules/
-package.json
-server.js
 
 # phonegap
 config.xml
