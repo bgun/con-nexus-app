@@ -84,7 +84,7 @@ function( $,        _,            moment,   FastClick,   App) {
     var $networkOffline = $('#network-offline');
 
     window.app = new App({
-      api_url: 'http://con-nexus.herokuapp.com/api',
+      api_url: 'http://localhost:5000/api',
       con_id: "jcon2014"
     });
 
