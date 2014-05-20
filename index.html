@@ -62,18 +62,12 @@
 
   <div id="about" class="page">
     <section class="page-content">
-      <h1>About JordanCon</h1>
+      <h1>About LibertyCon</h1>
       <p>
-      JordanCon is a fantasy literature convention founded in honor of the late author, Robert Jordan.
-      Jordan was the author of the best selling The Wheel of Time series.
+      LibertyCon is a Science Fiction / Fantasy convention held annually in Chattanooga, TN.
       </p>
       <p>
-      JordanCon features six tracks of simultaneous programming, a Dealers Hall, an Art Show featuring
-      original art by a variety of artists, and charity events benefiting the Mayo Clinic.
-      </p>
-      <p>
-      Past guests have included Harriet McDougal, Brandon Sanderson, Mary Robinette Kowal, Sam Weber,
-      David Wong, Jana G. Oliver, Emilie Bush, David B. Coe and Eugie Foster.
+      For more information, read <a href="http://www.libertycon.org/index.php/lc-info-3/about-libertycon">LibertyCon 101</a>.
       </p>
       <hr />
       <h1>About This App</h1>
@@ -121,7 +115,7 @@
         <p>
           Please enter your comments below. The feedback is anonymous. If you'd like to be contacted regarding your comment or question, please leave a name and email address. Thanks, we appreciate any and all feedback!
         </p>
-        <h3>How was <span id="feedback-subject" name="subject">JordanCon</span>?</h3>
+        <h3>How was <span id="feedback-subject" name="subject"></span>?</h3>
         <textarea id="feedback-text" name="text"></textarea>
         <button class="btn" type="submit" id="feedback-submit">Submit</button>
       </form>
@@ -140,7 +134,7 @@
 
   <h4>Presenters</h4>
   <ul id="event-guest-list" class="guest-list">
-    {{for guest_list tmpl="#guest-item-template" /}}
+    {{for guest_list_objects tmpl="#guest-item-template" /}}
   </ul>
 
   <a href="#feedback/{{:event_id}}" class="event-feedback">Submit feedback about <strong>{{:title}}</strong></a>
@@ -169,7 +163,7 @@
   <h3 class="guest-title">{{:title}}</h3>
   <h4>Itinerary</h4>
   <ul id="guest-event-list" class="event-list">
-    {{for event_list tmpl="#schedule-item-template" /}}
+    {{for event_list_objects tmpl="#schedule-item-template" /}}
   </ul>
   {{if bio}}
     <h4>About {{:name}}</h4>

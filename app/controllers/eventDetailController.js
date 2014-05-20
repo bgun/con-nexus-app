@@ -5,6 +5,12 @@ return function(id) {
   var t = this;
   var item = t.models.events.getById(id);
 
+  if(!item.guest_list_objects) {
+    item.guest_list_objects = _.sortBy(_.compact(_.map(item.guest_list, function(i) {
+      return t.models.guests.getById(i);
+    })), "name");
+  }
+
   headerView.$el.find('.btn-back').show();
   headerView.toggleSearch(false);
   headerView.setTitle(eventDetailView.title);

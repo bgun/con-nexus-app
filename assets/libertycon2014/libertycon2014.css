@@ -26,3 +26,9 @@
 .remove-todo {
   background: #444440;
 }
+#hotel-map .map-container {
+  background: #CCC;
+}
+#local-map .map-container {
+  background: #CCC;
+}

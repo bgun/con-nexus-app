@@ -3,10 +3,18 @@ define(["App"], function(App) {
 
 return new App.Model({
   parse: function(items) {
+    var assocItems = {};
+
     for(var i in items) {
       items[i].fdate = moment(items[i].datetime).format("dddd h:mm a");
+      var g = items[i];
+      assocItems[g.event_id] = g;
     }
-    return items;
+
+    return {
+      lookup: assocItems,
+      sorted: this.sort(items)
+    };
   },
   sort: function(items) {
     // sort by date
@@ -24,14 +32,6 @@ return new App.Model({
       return 0;
     });
   },
-  lookupById: function(id) {
-    for(var i in this.data) {
-      if(this.data[i].event_id === id) {
-        return this.data[i];
-      }
-    }
-    console.log("Event lookup failed (\""+id+"\"). ID may have been deleted");
-  },
   getById: function(id) {
     var t = this;
     var evt;
@@ -39,14 +39,14 @@ return new App.Model({
     if(_.isArray(id)) {
       var arr = [];
       for(var i in id) {
-        evt = t.lookupById(id[i]);
+        evt = t.data.lookup[id[i]];
         if(evt) {
           arr.push(evt);
         }
       }
       return t.sort(arr);
     } else {
-      return t.lookupById(id);
+      return t.data.lookup[id];
     }
   }
 });

@@ -42,7 +42,6 @@ return new App.View({
   addSeparators: function(items) {
     var t = this;
     var past, arr = [];
-    items = t.model.sort(items);
     for(var i = 0; i < items.length; i++) {
       //var now = new Date('2014-04-12 20:00:00');
       var now = new Date();
@@ -71,7 +70,7 @@ return new App.View({
     t.todo = todo;
 
     var $past;
-    var items = t.addSeparators(model.data);
+    var items = t.addSeparators(model.data.sorted);
     var visible = 0;
     var html = t.$template.render(items);
     t.$el.find('#schedule-list').html(html);
