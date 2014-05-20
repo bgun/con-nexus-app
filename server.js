@@ -12,4 +12,6 @@ app.get("/", function(req, res) {
   res.sendfile(__dirname + '/index.html');
 });
 
+console.log("Listening on port "+port);
+
 app.listen(port);

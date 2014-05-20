@@ -76,17 +76,18 @@ function( $,        _,            moment,   FastClick,   App) {
   ) {
   //
 
-    // localStorage keys
-    var LS_KEY_CON = "con";
-
     // cached jquery
     var $loading = $('#loading');
     var $networkOffline = $('#network-offline');
 
     window.app = new App({
       api_url: 'http://localhost:5000/api',
-      con_id: "jcon2014"
+      con_id: "libertycon2014"
     });
+
+    // localStorage keys
+    var LS_KEY_CON  = "con_"+app.settings.con_id;
+    var LS_KEY_TODO = "todo_"+app.settings.con_id;
 
     // network check
     app.online = true;
@@ -108,6 +109,7 @@ function( $,        _,            moment,   FastClick,   App) {
       todo: todo
     };
 
+    todo.key = LS_KEY_TODO;
     todo.load(); // localStorage, no callback
 
     var con_model_params = {

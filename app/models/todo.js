@@ -3,7 +3,6 @@ define(["App"], function(App) {
 
 return new App.Model({
   url: '',
-  key: 'todo',
   load: function() {
     var json = localStorage.getItem(this.key) || "[]";
     this.data = JSON.parse(json);
