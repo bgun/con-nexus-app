@@ -1,0 +1,28 @@
+#header {
+  background: rgba(88,88,80,0.9);
+}
+#menu {
+  background: rgba(55,55,50,1);
+}
+#menu ul li {
+  border-bottom: 1px solid rgb(75,75,65);
+}
+.event-list li.todo {
+  background-color: #FFE;
+}
+#schedule-list li.separator span {
+  background-color: #887;
+}
+.page h1 {
+  color: #c77b35;
+}
+.btn {
+  background: #555550;
+  border-color: #665;
+}
+.btn:active {
+  background: #777770;
+}
+.remove-todo {
+  background: #444440;
+}
