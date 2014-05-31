@@ -159,12 +159,20 @@ nav ul li {
   vertical-align: top;
 }
 #menu ul li a .menu-icon {
-  background: #000;
+  background-size: 100% 100%;
   display: inline-block;
   height: 1.8rem;
   margin-right: 1.4rem;
   width: 1.8rem;
 }
+.menu-icon.icon-home     { background-image: url("../images/icon-home-18-ffffff.png"); }
+.menu-icon.icon-schedule { background-image: url("../images/icon-calendar-18-ffffff.png"); }
+.menu-icon.icon-guests   { background-image: url("../images/icon-guests-18-ffffff.png"); }
+.menu-icon.icon-localmap { background-image: url("../images/icon-car-18-ffffff.png"); }
+.menu-icon.icon-hotelmap { background-image: url("../images/icon-map-marker-18-ffffff.png"); }
+.menu-icon.icon-about    { background-image: url("../images/icon-info-circle-18-ffffff.png"); }
+.menu-icon.icon-feedback { background-image: url("../images/icon-send-18-ffffff.png"); }
+
 #menu ul li a:active {
   background: rgba(255,255,255,0.1);
 }
@@ -582,6 +590,12 @@ nav ul li {
   color: #A35;
   font-size: 1.5rem;
   margin-top: 0.7rem;
+}
+#guest-detail .guest-image {
+  border: 2px solid #FFF;
+  float: right;
+  margin: 0.5rem 0 1.5rem 1.5rem;
+  width: 13rem;
 }
 #guest-event-list li {
   border-top: 1px solid #DDD;

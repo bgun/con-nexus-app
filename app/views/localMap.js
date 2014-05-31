@@ -29,6 +29,7 @@ return new App.View({
         iconAnchor: [25,59],
         popupAnchor: [0,-40]
       });
+      console.log(m);
       marker = L.marker([m.lat, m.lon], {icon: icon});
       m.formatted_phone = m.phone.replace(/-/g,'');
       marker.bindPopup($('#map-popup-template').render(m), popupOptions);

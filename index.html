@@ -21,13 +21,13 @@
 <nav id="menu">
   <button class="btn-menu menu-close"></button>
   <ul>
-    <li><a href="#home"     ><span class="menu-icon"></span>Home</a></li>
-    <li><a href="#schedule" ><span class="menu-icon"></span>Schedule</a></li>
-    <li><a href="#guests"   ><span class="menu-icon"></span>Guests</a></li>
-    <li><a href="#local-map"><span class="menu-icon"></span>Local Map</a></li>
-    <li><a href="#hotel-map"><span class="menu-icon"></span>Hotel Map</a></li>
-    <li><a href="#about"    ><span class="menu-icon"></span>About</a></li>
-    <li><a href="#feedback" ><span class="menu-icon"></span>Feedback</a></li>
+    <li><a href="#home"     ><span class="menu-icon icon-home"    ></span>Home</a></li>
+    <li><a href="#schedule" ><span class="menu-icon icon-schedule"></span>Schedule</a></li>
+    <li><a href="#guests"   ><span class="menu-icon icon-guests"  ></span>Guests</a></li>
+    <li><a href="#local-map"><span class="menu-icon icon-localmap"></span>Local Map</a></li>
+    <li><a href="#hotel-map"><span class="menu-icon icon-hotelmap"></span>Hotel Map</a></li>
+    <li><a href="#about"    ><span class="menu-icon icon-about"   ></span>About</a></li>
+    <li><a href="#feedback" ><span class="menu-icon icon-feedback"></span>Feedback</a></li>
   </ul>
 </nav>
 
@@ -167,6 +167,9 @@
   </ul>
   {{if bio}}
     <h4>About {{:name}}</h4>
+    {{if image}}
+      <img class="guest-image" src="./assets/libertycon2014/propics/{{:image}}" onerror="this.src='http://libertycon.org/images/pros/{{:image}}'" />
+    {{/if}}
     <p>{{:bio}}</p>
   {{/if}}
 </script>
