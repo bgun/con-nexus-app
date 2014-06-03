@@ -121,7 +121,7 @@ function( $,        _,            moment,   FastClick,   App) {
 
       localStorage.setItem(LS_KEY_CON, JSON.stringify(data));
 
-      localMapView.setView([data.lat, data.lon], 15);
+      localMapView.setView([data.lat, data.lon], 17);
 
       app.models.events.set(data.events, true);
       app.models.guests.set(data.guests, true);
