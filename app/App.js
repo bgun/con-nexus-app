@@ -85,9 +85,9 @@ App.Model.prototype.load = function(params,callback) {
         callback.apply(t, [t.data]);
       }
     },
-    error: function(err) {
+    error: function(xhr, status, err) {
       console.log(err);
-      alert("Error loading data.");
+      alert("Error loading data: "+status);
     }
   });
 };
