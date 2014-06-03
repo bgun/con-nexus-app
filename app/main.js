@@ -218,7 +218,9 @@ function( $,        _,            moment,   FastClick,   App) {
     } else if(app.online) {
       // online but no cached data
       app.toast("Downloading convention data for the first time...",20000);
-      con.load(con_model_params, init);
+      con.load(con_model_params, init, function() {
+        app.toast("Error loading convention data for the first time. Please make sure you have a network connection and restart the app.");
+      });
     } else if(localStorage.getItem(LS_KEY_CON)) {
       // offline but we have a cache
       app.toast("No network connection - using stored data");

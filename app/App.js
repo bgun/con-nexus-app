@@ -59,7 +59,7 @@ App.Model = function(options) {
   var t = this;
   t = $.extend(t, options);
 };
-App.Model.prototype.load = function(params,callback) {
+App.Model.prototype.load = function(params,callback, errorCallback) {
   var t = this;
   if(!t.url) {
     throw new error("Can't load without a URL");
@@ -85,7 +85,7 @@ App.Model.prototype.load = function(params,callback) {
         callback.apply(t, [t.data]);
       }
     },
-    error: function(xhr, status, err) {
+    error: errorCallback ? errorCallback : function(xhr, status, err) {
       console.log(err);
       alert("Error loading data: "+status);
     }
