@@ -783,6 +783,7 @@ nav ul li {
 .map-popup .place-subtitle.food     { color: #05F; }
 .map-popup .place-subtitle.shopping { color: #0B0; }
 .map-popup .place-subtitle.special  { color: #C35; }
+.map-popup .place-subtitle.hotel    { color: #80B; }
 
 
 #feedback {
