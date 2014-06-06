@@ -165,6 +165,7 @@ nav ul li {
   display: inline-block;
   height: 1.8rem;
   margin-right: 1.4rem;
+  vertical-align: bottom;
   width: 1.8rem;
 }
 .menu-icon.icon-home     { background-image: url("../images/icon-home-18-ffffff.png"); }
