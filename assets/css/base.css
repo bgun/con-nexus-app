@@ -64,6 +64,10 @@ nav ul li {
   margin: 0;
   padding: 0;
 }
+nav ul li.align-bottom {
+  position: absolute;
+  bottom: 0;
+}
 
 .btn {
   background: #2c4f01;
@@ -107,6 +111,7 @@ nav ul li {
   width: 8rem;
 }
 #toast {
+  background: rgb(30,30,30);
   background: rgba(30,30,30,0.95);
   border-radius: 3rem;
   color: #FFF;
@@ -120,6 +125,7 @@ nav ul li {
   z-index: 1001;
 }
 #network-offline {
+  background: rgb(200,0,0);
   background: rgba(200,0,0,0.95);
   color: #FFF;
   display: none;
@@ -175,6 +181,7 @@ nav ul li {
 .menu-icon.icon-hotelmap { background-image: url("../images/icon-map-marker-18-ffffff.png"); }
 .menu-icon.icon-about    { background-image: url("../images/icon-info-circle-18-ffffff.png"); }
 .menu-icon.icon-feedback { background-image: url("../images/icon-send-18-ffffff.png"); }
+.menu-icon.icon-exit     { background-image: url("../images/icon-exit-18-ffffff.png"); }
 
 #menu ul li a:active {
   background: rgba(255,255,255,0.1);
@@ -226,6 +233,7 @@ nav ul li {
 }
 
 #header {
+  background: rgb(47,84,1);
   background: rgba(47,84,1,0.9);
   height: 6rem;
   position: absolute;
