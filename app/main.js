@@ -117,6 +117,14 @@ function( $,        _,            moment,   FastClick,   App) {
       con_id: app.settings.con_id
     };
 
+    var exitApp = function() {
+      if(navigator.app) {
+        navigator.app.exitApp();
+      } else {
+        console.error("No navigator.app");
+      }
+    };
+
     var init = function(data) {
 
       localStorage.setItem(LS_KEY_CON, JSON.stringify(data));
@@ -134,15 +142,16 @@ function( $,        _,            moment,   FastClick,   App) {
         context: app,
         defaultRoute: "home",
         routes: {
-          "home"         : homeController,
           "about"        : aboutController,
-          "schedule"     : scheduleController,
           "event-detail" : eventDetailController,
+          "exit"         : exitApp,
+          "feedback"     : feedbackController,
           "guests"       : guestsController,
           "guest-detail" : guestDetailController,
-          "local-map"    : localMapController,
+          "home"         : homeController,
           "hotel-map"    : hotelMapController,
-          "feedback"     : feedbackController
+          "local-map"    : localMapController,
+          "schedule"     : scheduleController
         },
         onNavigate: function() {
           menuView.$el.trigger('close');
@@ -154,6 +163,7 @@ function( $,        _,            moment,   FastClick,   App) {
     };
 
     var $pages = $('#pages');
+    var $restart = $('#restart');
     var $toast = $('#toast');
     var toastTimeout;
     app.toast = function(text, delay) {
@@ -192,6 +202,14 @@ function( $,        _,            moment,   FastClick,   App) {
       $pages.removeClass('menu-open');
     });
 
+    $restart.on('click',function() {
+      $loading.show();
+      app.toast("Checking for updated convention data...");
+      setTimeout(function() {
+        checkIfUpdatePossible();
+      },2000);
+    });
+
     var checkUpdated = function() {
       var current_data = JSON.parse(localStorage.getItem(LS_KEY_CON));
       con.getBasic({
@@ -212,23 +230,29 @@ function( $,        _,            moment,   FastClick,   App) {
       });
     };
 
-    if(app.online && localStorage.getItem(LS_KEY_CON)) {
-      app.toast("Checking for updated convention data...",10000);
-      checkUpdated();
-    } else if(app.online) {
-      // online but no cached data
-      app.toast("Downloading convention data for the first time...",20000);
-      con.load(con_model_params, init, function() {
-        app.toast("Error loading convention data for the first time. Please make sure you have a network connection, then restart the app.",20000);
-      });
-    } else if(localStorage.getItem(LS_KEY_CON)) {
-      // offline but we have a cache
-      app.toast("No network connection - using stored data");
-      init(current_data);
-    } else {
-      // offline, no cache
-      app.toast("You need an Internet connection to download convention data for the first time.");
-    }
+    var checkIfUpdatePossible = function() {
+      if(app.online && localStorage.getItem(LS_KEY_CON)) {
+        // online and we have cached data, might be old
+        app.toast("Checking for updated convention data...",10000);
+        checkUpdated();
+      } else if(app.online) {
+        // online but no cached data
+        app.toast("Downloading convention data for the first time...",20000);
+        con.load(con_model_params, init, function() {
+          app.toast("Error loading convention data for the first time. Please make sure you have a network connection, then restart the app.",20000);
+        });
+      } else if(localStorage.getItem(LS_KEY_CON)) {
+        // offline but we have a cache
+        app.toast("No network connection - using stored data");
+        init(current_data);
+      } else {
+        // offline, no cache
+        app.toast("You need an Internet connection to download convention data for the first time.");
+      }
+    };
+
+    checkIfUpdatePossible();
+
 
   }); // end app require
 
