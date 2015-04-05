@@ -82,7 +82,7 @@ function( $,        _,            moment,   FastClick,   App) {
 
     window.app = new App({
       api_url: 'http://con-nexus.herokuapp.com/api',
-      con_id: "libertycon2014"
+      con_id: "jcon2015"
     });
 
     // localStorage keys
