@@ -21,7 +21,11 @@
     "express": "~3.5.0"
   },
   "devDependencies": {
-    "mocha": "*",
-    "chai" : "*"
+    "chai": "*",
+    "gulp": "^3.8.11",
+    "gulp-browserify": "^0.5.1",
+    "gulp-concat": "^2.5.2",
+    "gulp-less": "^3.0.2",
+    "mocha": "*"
   }
 }
