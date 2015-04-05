@@ -1,3 +1,5 @@
+'use strict';
+
 define(["views/header","views/schedule","views/eventDetail"], function(headerView, scheduleView, eventDetailView) {
 //
 

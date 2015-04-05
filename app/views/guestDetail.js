@@ -1,3 +1,5 @@
+'use strict';
+
 define(["App","jsrender"], function(App,jsrender) {
 //
 

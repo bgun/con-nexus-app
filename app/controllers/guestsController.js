@@ -1,3 +1,5 @@
+'use strict';
+
 define(["views/header","views/guests"], function(headerView, guestsView) {
 //
 

@@ -1,3 +1,5 @@
+'use strict';
+
 define(["App","controllers/feedbackController","jsrender"], function(App, feedbackController, jsrender) {
 //
 

@@ -1,3 +1,5 @@
+'use strict';
+
 define(["App", "mapbox", "jsrender"], function(App, mapbox, jsrender) {
 //
 

@@ -1,3 +1,5 @@
+'use strict';
+
 define(["App","views/menu","views/schedule"], function(App, menuView, scheduleView) {
 //
 

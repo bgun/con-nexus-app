@@ -1,3 +1,5 @@
+'use strict';
+
 define(["views/header","views/home"], function(headerView, homeView) {
 //
 

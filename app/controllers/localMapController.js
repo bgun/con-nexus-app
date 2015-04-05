@@ -1,3 +1,5 @@
+'use strict';
+
 define(["views/header","views/localMap"], function(headerView, localMapView) {
 //
 
