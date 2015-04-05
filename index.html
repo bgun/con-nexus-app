@@ -21,13 +21,15 @@
 <nav id="menu">
   <button class="btn-menu menu-close"></button>
   <ul>
-    <li><a href="#home"     ><span class="menu-icon"></span>Home</a></li>
-    <li><a href="#schedule" ><span class="menu-icon"></span>Schedule</a></li>
-    <li><a href="#guests"   ><span class="menu-icon"></span>Guests</a></li>
-    <li><a href="#local-map"><span class="menu-icon"></span>Local Map</a></li>
-    <li><a href="#hotel-map"><span class="menu-icon"></span>Hotel Map</a></li>
-    <li><a href="#about"    ><span class="menu-icon"></span>About</a></li>
-    <li><a href="#feedback" ><span class="menu-icon"></span>Feedback</a></li>
+    <li><a href="#home"     ><span class="menu-icon icon-home"    ></span>Home</a></li>
+    <li><a href="#schedule" ><span class="menu-icon icon-schedule"></span>Schedule</a></li>
+    <li><a href="#guests"   ><span class="menu-icon icon-guests"  ></span>Guests</a></li>
+    <li><a href="#local-map"><span class="menu-icon icon-localmap"></span>Local Map</a></li>
+    <li><a href="#hotel-map"><span class="menu-icon icon-hotelmap"></span>Hotel Map</a></li>
+    <li><a href="#about"    ><span class="menu-icon icon-about"   ></span>About</a></li>
+    <li><a href="#feedback" ><span class="menu-icon icon-feedback"></span>Feedback</a></li>
+    <li><a id="restart"     ><span class="menu-icon icon-update"  ></span>Update Data</a></li>
+    <li class="align-bottom"><a href="#exit"     ><span class="menu-icon icon-exit"    ></span>Exit</a></li>
   </ul>
 </nav>
 
@@ -133,7 +135,7 @@
 <script id="event-detail-template" type="x-jquery-tmpl">
   <h1 class="event-title">{{:title}}</h1>
   <span class="event-date">{{:fdate}}</span><br />
-  <span class="event-location">{{:location}}</span>
+  <span class="event-room">{{:room_name}}</span>
   <p class="event-description">{{:description}}</p>
   <button type="button" class="btn btn-todo remove-todo {{if !inTodo}}hidden{{/if}}" data-event-id="{{:event_id}}">Remove from My Todo</button>
   <button type="button" class="btn btn-todo add-todo    {{if inTodo }}hidden{{/if}}" data-event-id="{{:event_id}}">Add to My Todo</button>
@@ -153,7 +155,7 @@
   <li class="event {{if todo}}todo{{/if}} {{if past}}past{{/if}}">
     <a href="#event-detail/{{:event_id}}" data-event-id="{{:event_id}}">
       <span class="title">{{:title}}</span>
-      <span class="location">{{:location}}</span>
+      <span class="room">{{:room_name}}</span>
       <span class="time">{{:fdate}}</span>
     </a>
   </li>
@@ -173,6 +175,9 @@
   </ul>
   {{if bio}}
     <h4>About {{:name}}</h4>
+    {{if image}}
+      <img class="guest-image" src="./assets/libertycon2014/propics/{{:image}}" onerror="this.src='http://libertycon.org/images/pros/{{:image}}'" />
+    {{/if}}
     <p>{{:bio}}</p>
   {{/if}}
 </script>
