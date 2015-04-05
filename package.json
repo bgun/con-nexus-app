@@ -29,6 +29,7 @@
     "gulp-browserify": "^0.5.1",
     "gulp-concat": "^2.5.2",
     "gulp-less": "^3.0.2",
+    "gulp-live-server": "0.0.8",
     "gulp-template-compile": "^1.0.0",
     "mocha": "*"
   }

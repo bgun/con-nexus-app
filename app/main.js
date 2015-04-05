@@ -6,23 +6,23 @@ var mapbox    = require('./lib/mapbox.js');
 var FastClick = require('fastclick');
 
 
-var con    = require('models/con.js');
-var events = require('models/events.js');
-var guests = require('models/guests.js');
-var places = require('models/places.js');
-var todo   = require('models/todo.js');
+var con    = require('./models/con.js');
+var events = require('./models/events.js');
+var guests = require('./models/guests.js');
+var places = require('./models/places.js');
+var todo   = require('./models/todo.js');
 
-var eventDetailController = require("controllers/aboutController.js");
-var guestsController      = require("controllers/eventDetailController.js");
-var guestDetailController = require("controllers/guestsController.js");
-var homeController        = require("controllers/guestDetailController.js");
-var hotelMapController    = require("controllers/homeController.js");
-var localMapController    = require("controllers/hotelMapController.js");
-var scheduleController    = require("controllers/localMapController.js");
-var feedbackController    = require("controllers/scheduleController.js");
+var eventDetailController = require("./controllers/aboutController.js");
+var guestsController      = require("./controllers/eventDetailController.js");
+var guestDetailController = require("./controllers/guestsController.js");
+var homeController        = require("./controllers/guestDetailController.js");
+var hotelMapController    = require("./controllers/homeController.js");
+var localMapController    = require("./controllers/hotelMapController.js");
+var scheduleController    = require("./controllers/localMapController.js");
+var feedbackController    = require("./controllers/scheduleController.js");
 
-var menuView = require('views/menu.js');
-var localMapView = require('views/localMap.js');
+var menuView     = require('./views/menu.js');
+var localMapView = require('./views/localMap.js');
 
 // check for mobile
 if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry|IEMobile)/)) {
