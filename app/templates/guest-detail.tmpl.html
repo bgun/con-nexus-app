@@ -1,0 +1,13 @@
+<h1 class="guest-name">{{:name}}</h1>
+<h3 class="guest-title">{{:title}}</h3>
+<h4>Itinerary</h4>
+<ul id="guest-event-list" class="event-list">
+  {{for event_list_objects tmpl="#schedule-item-template" /}}
+</ul>
+{{if bio}}
+  <h4>About {{:name}}</h4>
+  {{if image}}
+    <img class="guest-image" src="./assets/libertycon2014/propics/{{:image}}" onerror="this.src='http://libertycon.org/images/pros/{{:image}}'" />
+  {{/if}}
+  <p>{{:bio}}</p>
+{{/if}}

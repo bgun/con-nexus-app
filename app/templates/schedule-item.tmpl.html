@@ -1,0 +1,10 @@
+<li class="separator {{if past}}past{{/if}}"><span>{{:fdate}}</span></li>
+{{else}}
+<li class="event {{if todo}}todo{{/if}} {{if past}}past{{/if}}">
+<a href="#event-detail/{{:event_id}}" data-event-id="{{:event_id}}">
+  <span class="title">{{:title}}</span>
+  <span class="room">{{:room_name}}</span>
+  <span class="time">{{:fdate}}</span>
+</a>
+</li>
+{{/if}}

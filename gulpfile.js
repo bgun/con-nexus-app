@@ -3,8 +3,10 @@
 var gulp       = require('gulp')
 var browserify = require('gulp-browserify');
 var concat     = require('gulp-concat');
-var gutil      = require('gulp-util');
 var less       = require('gulp-less');
+var template   = require('gulp-template-compile');
+
+var fs = require('fs');
 
 var conId = process.env.CON;
 
@@ -23,13 +25,21 @@ gulp.task('browserify', function() {
 });
 
 gulp.task('less', function() {
-  gulp.src('assets/css/'+conId+'/'+conId+'.less')
+  gulp.src('assets/'+conId+'/'+conId+'.less')
     .pipe(less())
     .pipe(concat('./bundle.css'))
     .pipe(gulp.dest(''));
 });
+ 
+gulp.task('templates', function () {
+  gulp.src('app/templates/*.tmpl.html')
+    .pipe(template())
+    .pipe(concat('templates.js'))
+    .pipe(gulp.dest('./'));
+});
 
 gulp.task('default', function() {
-  gulp.watch('app/**/*.js',           ['browserify','todo']);
-  gulp.watch('assets/**/*.less', ['less']);
+  gulp.watch('app/**/*.js',               ['browserify','todo']);
+  gulp.watch('app/templates/*.tmpl.html', ['templates']);
+  gulp.watch('assets/**/*.less',          ['less']);
 });

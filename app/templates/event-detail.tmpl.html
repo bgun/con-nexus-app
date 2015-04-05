@@ -1,0 +1,12 @@
+<span class="event-date">{{:fdate}}</span><br />
+<span class="event-room">{{:room_name}}</span>
+<p class="event-description">{{:description}}</p>
+<button type="button" class="btn btn-todo remove-todo {{if !inTodo}}hidden{{/if}}" data-event-id="{{:event_id}}">Remove from My Todo</button>
+<button type="button" class="btn btn-todo add-todo    {{if inTodo }}hidden{{/if}}" data-event-id="{{:event_id}}">Add to My Todo</button>
+
+<h4>Presenters</h4>
+<ul id="event-guest-list" class="guest-list">
+{{for guest_list_objects tmpl="#guest-item-template" /}}
+</ul>
+
+<a href="#feedback/{{:event_id}}" class="event-feedback">Submit feedback about <strong>{{:title}}</strong></a>
