@@ -1,10 +1,11 @@
 'use strict';
 
-var $         = require('jquery');
-var _         = require('lodash');
-var mapbox    = require('./lib/mapbox.js');
-var FastClick = require('fastclick');
+global.$         = require('jquery');
+global._         = require('lodash');
+global.mapbox    = require('./lib/mapbox.js');
 
+var App = require('./App.js');
+var FastClick = require('fastclick');
 
 var con    = require('./models/con.js');
 var events = require('./models/events.js');
@@ -12,14 +13,15 @@ var guests = require('./models/guests.js');
 var places = require('./models/places.js');
 var todo   = require('./models/todo.js');
 
-var eventDetailController = require("./controllers/aboutController.js");
-var guestsController      = require("./controllers/eventDetailController.js");
-var guestDetailController = require("./controllers/guestsController.js");
-var homeController        = require("./controllers/guestDetailController.js");
-var hotelMapController    = require("./controllers/homeController.js");
-var localMapController    = require("./controllers/hotelMapController.js");
-var scheduleController    = require("./controllers/localMapController.js");
-var feedbackController    = require("./controllers/scheduleController.js");
+var aboutController       = require("./controllers/aboutController.js");
+var eventDetailController = require("./controllers/eventDetailController.js");
+var guestsController      = require("./controllers/guestsController.js");
+var guestDetailController = require("./controllers/guestDetailController.js");
+var homeController        = require("./controllers/homeController.js");
+var hotelMapController    = require("./controllers/hotelMapController.js");
+var localMapController    = require("./controllers/localMapController.js");
+var scheduleController    = require("./controllers/scheduleController.js");
+var feedbackController    = require("./controllers/feedbackController.js");
 
 var menuView     = require('./views/menu.js');
 var localMapView = require('./views/localMap.js');
@@ -34,7 +36,7 @@ if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry|IEMobile)/))
 function onDeviceReady() {
 
   // remove 200ms delay on mobile click
-  FastClick.attach(document.body);
+  FastClick(document.body);
 
   // cached jquery
   var $loading = $('#loading');
@@ -213,4 +215,4 @@ function onDeviceReady() {
 
   checkIfUpdatePossible();
 
-} // end onDeviceReady
+}; // end onDeviceReady

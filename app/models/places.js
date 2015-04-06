@@ -1,14 +1,9 @@
 'use strict';
 
-define(["App"], function(App) {
-//
+var App = require('../App.js');
 
-return new App.Model({
+module.exports = new App.Model({
   parse: function(items) {
     return items;
   }
 });
-
-//
-});
-

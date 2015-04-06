@@ -7,7 +7,7 @@ var less       = require('gulp-less');
 var template   = require('gulp-template-compile');
 var gls        = require('gulp-live-server');
 
-var server = gls.static();
+var server = null;
 
 var fs = require('fs');
 var test = fs.readFileSync('package.json');
@@ -18,7 +18,7 @@ if(!conId) {
   throw new Error("Must provide a convention ID");
 }
 
-gulp.task('browserify', function() {
+gulp.task('browserify', ['serve'], function() {
   return gulp.src('app/main.js')
     .pipe(browserify({
       debug: true
@@ -29,7 +29,7 @@ gulp.task('browserify', function() {
     .pipe(server.notify());
 });
 
-gulp.task('less', function() {
+gulp.task('less', ['serve'], function() {
   return gulp.src('assets/'+conId+'/'+conId+'.less')
     .pipe(less())
     .pipe(concat('bundle.css'))
@@ -37,20 +37,27 @@ gulp.task('less', function() {
     .pipe(server.notify());
 });
  
-gulp.task('templates', function () {
+gulp.task('templates', ['serve'], function () {
   return gulp.src('app/templates/*.tmpl.html')
-    .pipe(template())
+    .pipe(template({
+      name: function(file) {
+        return file.relative.replace('.tmpl.html','');
+      }
+    }))
     .pipe(concat('templates.js'))
     .pipe(gulp.dest('./'))
     .pipe(server.notify());
 });
 
-gulp.task('serve', ['browserify','less','templates'], function() {
-  server.start();
-  gulp.watch('app/**/*.js',               ['browserify','todo']);
+gulp.task('watch', ['serve'], function() {
+  gulp.watch('app/**/*.js',               ['browserify']);
   gulp.watch('app/templates/*.tmpl.html', ['templates']);
-  gulp.watch('assets/**/*.less',          ['less']);
+  gulp.watch(['app/**/*.less','assets/**/*.less'],          ['less']);
 });
 
-gulp.task('default', ['serve','browserify','less','templates']);
+gulp.task('serve', function() {
+  server = gls.static('./', 5001);
+  server.start();
+});
 
+gulp.task('default', ['serve','watch','browserify','less','templates']);

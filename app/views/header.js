@@ -1,9 +1,10 @@
 'use strict';
 
-define(["App","views/menu","views/schedule"], function(App, menuView, scheduleView) {
-//
+var App          = require('../App.js');
+var menuView     = require('./menu.js');
+var scheduleView = require('./schedule.js');
 
-return new App.View({
+module.exports = new App.View({
   id: 'header',
   events: {
     'click .menu-toggle': function(e) {
@@ -48,7 +49,4 @@ return new App.View({
   toggleSearch: function(bool) {
     this.$el.find('#search').toggle(bool);
   }
-});
-
-//
 });

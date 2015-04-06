@@ -1,13 +1,12 @@
 'use strict';
 
-define(["App", "mapbox", "jsrender"], function(App, mapbox, jsrender) {
-//
+var App = require('../App.js');
 
 var popupOptions = {
   autoPanPadding: [10,100]
 };
 
-return new App.View({
+module.exports = new App.View({
   id: 'local-map',
   title: 'Local Map',
   init: function() {
@@ -38,7 +37,4 @@ return new App.View({
       t.map.addLayer(marker);
     });
   }
-});
-
-//
 });

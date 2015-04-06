@@ -1,20 +1,17 @@
 'use strict';
 
-define(['App'], function(App) {
-//
+var App = require('../App.js');
 
-  return new App.View({
-    id: 'guests',
-    title: 'Guests',
-    template: 'guest-item-template',
-    render: function(guests) {
-      var t = this;
-      t.$el.find('#guests-all').html(
-        t.$template.render(guests.sorted)
-      );
-    }
-  });
-
-//
+module.exports = new App.View({
+  id: 'guests',
+  title: 'Guests',
+  template: 'guest-item',
+  render: function(guests) {
+    var t = this;
+    t.$el.find('#guests-all').html(
+      _.map(guests.sorted, function(g) {
+        return t.$template(g);
+      }).join('')
+    );
+  }
 });
-

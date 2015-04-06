@@ -1,9 +1,5 @@
 'use strict';
 
-define(["jquery"],
-function($) {
-//
-
 var App = function(settings) {
   this.settings = settings;
 };
@@ -24,8 +20,8 @@ App.View = function(options) {
 
   // throw an error if we specify a template that doesn't exist
   if(options.template !== undefined) {
-    if($('#'+options.template).length == 1) {
-      t.$template = $('#'+options.template);
+    if(typeof JST[options.template] === 'function') {
+      t.$template = JST[options.template];
     } else {
       throw new Error("Template '"+options.template+"' not found");
     }
@@ -135,7 +131,4 @@ App.Router.prototype.navigate = function(path) {
   this.options.onNavigate.apply(this);
 };
 
-return App;
-
-//
-});
+module.exports = App;

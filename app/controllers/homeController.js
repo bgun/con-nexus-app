@@ -1,17 +1,17 @@
 'use strict';
 
-define(["views/header","views/home"], function(headerView, homeView) {
-//
+var headerView = require('../views/header.js');
+var homeView   = require('../views/home.js');
 
-  return function() {
-    headerView.$el.find('.btn-back').hide();
-    headerView.toggleSearch(false);
-    headerView.setTitle(homeView.title);
+module.exports = function() {
+  
+  headerView.$el.find('.btn-back').hide();
+  headerView.toggleSearch(false);
+  headerView.setTitle(homeView.title);
 
-    todoArray = this.models.todo.data;
-    todoItems = this.models.events.getById(todoArray);
-    homeView.renderTodo(todoItems);
-    homeView.show();
-  };
+  var todoArray = this.models.todo.data;
+  var todoItems = this.models.events.getById(todoArray);
+  homeView.renderTodo(todoItems);
+  homeView.show();
 
-});
+};

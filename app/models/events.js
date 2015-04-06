@@ -1,17 +1,24 @@
 'use strict';
 
-define(["App"], function(App) {
-//
+var App = require('../App.js');
+var moment = require('moment');
 
-return new App.Model({
+var defaults = {
+  room: ""
+};
+
+module.exports = new App.Model({
   parse: function(items) {
     var assocItems = {};
 
-    for(var i in items) {
-      items[i].fdate = moment(items[i].datetime).format("dddd h:mm a");
-      var g = items[i];
-      assocItems[g.event_id] = g;
-    }
+    items = _.map(items, function(i) {
+      i = _.extend({
+        fdate : moment(i.datetime).format("dddd h:mm a"),
+        type  : "event"
+      }, defaults, i);
+      assocItems[i.event_id] = i;
+      return i;
+    });
 
     return {
       lookup: assocItems,
@@ -51,7 +58,5 @@ return new App.Model({
       return t.data.lookup[id];
     }
   }
-});
 
-//
 });

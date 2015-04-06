@@ -1,11 +1,11 @@
 'use strict';
 
-define(["App","controllers/feedbackController","jsrender"], function(App, feedbackController, jsrender) {
-//
+var App = require('../App.js');
+var feedbackController = require('../controllers/feedbackController.js');
 
-return new App.View({
+module.exports = new App.View({
   id: 'event-detail',
-  template: 'event-detail-template',
+  template: 'event-detail',
   title: 'Event Detail',
   // custom methods
   render: function(item) {
@@ -13,7 +13,7 @@ return new App.View({
 
     var t = this;
     t.$el.find('.page-content').html(
-      t.$template.render(item)
+      t.$template(item)
     );
 
     $addTodo = t.$el.find('.add-todo');
@@ -37,7 +37,4 @@ return new App.View({
       $addTodo.show();
     });
   }
-});
-
-//
 });

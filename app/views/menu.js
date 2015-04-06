@@ -1,9 +1,8 @@
 'use strict';
 
-define(["App"],function(App) {
-//
+var App = require('../App.js');
 
-return new App.View({
+module.exports = new App.View({
   id: 'menu',
   events: {
     'click .menu-close': function(e) {
@@ -23,7 +22,4 @@ return new App.View({
       }
     }
   }
-});
-
-//
 });

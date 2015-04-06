@@ -1,9 +1,9 @@
 'use strict';
 
-define(["App", "mapbox"], function(App, mapbox) {
-//
+var App = require('../App.js');
 
-return new App.View({
+module.exports = new App.View({
+  
   id: 'hotel-map',
   title: 'Hotel Map',
   init: function() {
@@ -14,9 +14,8 @@ return new App.View({
     }).setView([0,0],16);
     // hotel map
     var hotelMapUrl = this.$el.find('#hotel-map-container').attr('data-map-url');
-    var hotelMapBounds = [[-0.006,-0.01],[0.006,0.01]];
+    var hotelMapBounds = [[-0.01,-0.006],[0.01,0.006]];
     L.imageOverlay(hotelMapUrl, hotelMapBounds).addTo(this.map);
   }
-});
 
 });

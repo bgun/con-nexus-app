@@ -1,19 +1,18 @@
 'use strict';
 
-define(["views/header", "views/schedule"], function(headerView, scheduleView) {
-//
+var headerView   = require('../views/header.js');
+var scheduleView = require('../views/schedule.js');
 
-  return function() {
-    headerView.$el.find('.btn-back').show();
-    headerView.$el.find('.btn-search').show();
-    headerView.toggleSearch(true);
-    headerView.setTitle(scheduleView.title);
+module.exports = function() {
 
-    var model = this.models.events;
-    var todo  = this.models.todo;
-    scheduleView.render(model, todo);
-    scheduleView.show();
-  };
+  headerView.$el.find('.btn-back').show();
+  headerView.$el.find('.btn-search').show();
+  headerView.toggleSearch(true);
+  headerView.setTitle(scheduleView.title);
 
-//
-});
+  var model = this.models.events;
+  var todo  = this.models.todo;
+  scheduleView.render(model, todo);
+  scheduleView.show();
+
+};

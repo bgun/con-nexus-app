@@ -1,9 +1,10 @@
 'use strict';
 
-define(["views/header","views/localMap"], function(headerView, localMapView) {
-//
+var headerView   = require('../views/header.js');
+var localMapView = require('../views/localMap.js');
 
-return function() {
+module.exports = function() {
+  
   headerView.$el.find('.btn-back').show();
   headerView.toggleSearch(false);
   headerView.setTitle(localMapView.title);
@@ -12,7 +13,5 @@ return function() {
   var markers = this.models.places.data;
   localMapView.renderMarkers(markers, this.settings.con_id);
   localMapView.show();
-};
 
-//
-});
+};

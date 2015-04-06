@@ -1,9 +1,10 @@
 'use strict';
 
-define(["views/header","views/schedule","views/about"], function(headerView, scheduleView, aboutView) {
-//
+var headerView   = require('../views/header.js');
+var scheduleView = require('../views/schedule.js');
+var aboutView    = require('../views/about.js');
 
-return function() {
+module.exports = function() {
   headerView.$el.find('.btn-back').show();
   headerView.toggleSearch(false);
   headerView.setTitle(aboutView.title);
@@ -11,6 +12,3 @@ return function() {
   scheduleView.clearFilter();
   aboutView.show();
 };
-
-//
-});

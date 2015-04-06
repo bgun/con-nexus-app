@@ -1,9 +1,9 @@
 'use strict';
 
-define(["App"], function(App) {
-//
+var App = require('../App.js');
 
-return new App.Model({
+module.exports = new App.Model({
+
   url: '',
   load: function() {
     var json = localStorage.getItem(this.key) || "[]";
@@ -35,7 +35,4 @@ return new App.Model({
   hasItem: function(id) {
     return this.data.indexOf(id) > -1;
   }
-});
-
-//
 });

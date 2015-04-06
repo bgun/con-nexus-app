@@ -1,3 +1,7 @@
+@imageDir: './assets/images';
+
+@import (inline) 'mapbox.css';
+
 html, body {
   font-family: "Helvetica Neue", sans-serif;
   font-size: 10px;
@@ -101,7 +105,7 @@ nav ul li.align-bottom {
   z-index: 1000;
 }
 #loading .spinner {
-  background: url("../images/loading.gif");
+  background: url("@{imageDir}/loading.gif");
   background-position: center center;
   background-repeat: no-repeat;
   display: block;
@@ -145,7 +149,7 @@ nav ul li.align-bottom {
 
 
 #menu {
-  background: #243d00;
+  background: rgb(35,35,35);
   height: 100%;
   position: fixed;
     top: 0;
@@ -177,14 +181,14 @@ nav ul li.align-bottom {
   vertical-align: bottom;
   width: 1.8rem;
 }
-.menu-icon.icon-home     { background-image: url("../images/icon-home-18-ffffff.png"); }
-.menu-icon.icon-schedule { background-image: url("../images/icon-calendar-18-ffffff.png"); }
-.menu-icon.icon-guests   { background-image: url("../images/icon-guests-18-ffffff.png"); }
-.menu-icon.icon-localmap { background-image: url("../images/icon-car-18-ffffff.png"); }
-.menu-icon.icon-hotelmap { background-image: url("../images/icon-map-marker-18-ffffff.png"); }
-.menu-icon.icon-about    { background-image: url("../images/icon-info-circle-18-ffffff.png"); }
-.menu-icon.icon-feedback { background-image: url("../images/icon-send-18-ffffff.png"); }
-.menu-icon.icon-exit     { background-image: url("../images/icon-exit-18-ffffff.png"); }
+.menu-icon.icon-home     { background-image: url("@{imageDir}/icon-home-18-ffffff.png"); }
+.menu-icon.icon-schedule { background-image: url("@{imageDir}/icon-calendar-18-ffffff.png"); }
+.menu-icon.icon-guests   { background-image: url("@{imageDir}/icon-guests-18-ffffff.png"); }
+.menu-icon.icon-localmap { background-image: url("@{imageDir}/icon-car-18-ffffff.png"); }
+.menu-icon.icon-hotelmap { background-image: url("@{imageDir}/icon-map-marker-18-ffffff.png"); }
+.menu-icon.icon-about    { background-image: url("@{imageDir}/icon-info-circle-18-ffffff.png"); }
+.menu-icon.icon-feedback { background-image: url("@{imageDir}/icon-send-18-ffffff.png"); }
+.menu-icon.icon-exit     { background-image: url("@{imageDir}/icon-exit-18-ffffff.png"); }
 
 #menu ul li a:active {
   background: rgba(255,255,255,0.1);
@@ -210,10 +214,10 @@ nav ul li.align-bottom {
   width: 5rem;
 }
 .btn-menu.menu-close {
-  background-image: url("../images/icon-close-80-ffffff.png");
+  background-image: url("@{imageDir}/icon-close-80-ffffff.png");
 }
 .btn-menu {
-  background-image: url("../images/icon-menu-80-ffffff.png");
+  background-image: url("@{imageDir}/icon-menu-80-ffffff.png");
   background-position: center center;
   background-repeat: no-repeat;
   background-size: 2.5rem 2.5rem;
@@ -227,7 +231,7 @@ nav ul li.align-bottom {
   color: #AAA;
 }
 .btn-search {
-  background-image: url("../images/icon-search-80-dddddd.png");
+  background-image: url("@{imageDir}/icon-search-80-dddddd.png");
   background-position: center center;
   background-repeat: no-repeat;
   background-size: 50% 50%;
@@ -238,8 +242,8 @@ nav ul li.align-bottom {
 }
 
 #header {
-  background: rgb(47,84,1);
-  background: rgba(47,84,1,0.9);
+  background: rgb(50,50,50);
+  background: rgba(50,50,50,0.9);
   height: 6rem;
   position: absolute;
     top: 0;
@@ -270,7 +274,7 @@ nav ul li.align-bottom {
 }
 #header .btn-back {
   background-color: transparent;
-  background-image: url("../images/icon-arrow-back-80-ffffff.png");
+  background-image: url("@{imageDir}/icon-arrow-back-80-ffffff.png");
   background-size: 3rem 3rem;
   -webkit-background-size: 3rem 3rem;
   background-position: left center;
@@ -297,7 +301,7 @@ nav ul li.align-bottom {
 
 #search {
   background-color: #FFF;
-  background-image: url("../images/icon-search-80-dddddd.png");
+  background-image: url("@{imageDir}/icon-search-80-dddddd.png");
   background-size: 3rem 3rem;
   -webkit-background-size: 3rem 3rem;
   background-position: 1rem center;
@@ -445,7 +449,7 @@ nav ul li.align-bottom {
   background: #F8F8F8;
 }
 #schedule-list li.separator span {
-  background: #797;
+  background: #888;
   border-radius: 1rem;
   color: #FFF;
   display: block;
@@ -491,7 +495,7 @@ nav ul li.align-bottom {
 }
 .event-list li.todo {
   background-color: #DFD;
-  background-image: url("../images/icon-todo-check.png");
+  background-image: url("@{imageDir}/icon-todo-check.png");
   background-position: 97% center;
   background-size: 3rem 3rem;
   -webkit-background-size: 3rem 3rem;
@@ -694,9 +698,9 @@ nav ul li.align-bottom {
   height: 5rem;
   width: 5rem;
 }
-#home-menu .icon.icon-schedule { background-image: url("../images/icon-schedule.png"); }
-#home-menu .icon.icon-guests   { background-image: url("../images/icon-guests.png"); }
-#home-menu .icon.icon-hotelmap { background-image: url("../images/icon-map.png"); }
+#home-menu .icon.icon-schedule { background-image: url("@{imageDir}/icon-schedule.png"); }
+#home-menu .icon.icon-guests   { background-image: url("@{imageDir}/icon-guests.png"); }
+#home-menu .icon.icon-hotelmap { background-image: url("@{imageDir}/icon-map.png"); }
 
 #home .page-content {
   height: 100%;

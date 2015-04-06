@@ -1,9 +1,11 @@
 'use strict';
 
-define(["views/header","views/schedule","views/eventDetail"], function(headerView, scheduleView, eventDetailView) {
-//
+var headerView      = require('../views/header.js');
+var scheduleView    = require('../views/schedule.js');
+var eventDetailView = require('../views/eventDetail.js');
 
-return function(id) {
+module.exports = function(id) {
+  
   var t = this;
   var item = t.models.events.getById(id);
 
@@ -30,7 +32,5 @@ return function(id) {
     t.models.todo.removeTodo(id);
   });
   eventDetailView.show();
-};
 
-//
-});
+};

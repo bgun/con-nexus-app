@@ -1,12 +1,11 @@
 'use strict';
 
-define(['App'], function(App) {
-//
+var App = require('../App.js');
 
-return new App.View({
+module.exports = new App.View({
   id: 'home',
   title: 'Home',
-  template: 'schedule-item-template', // for todo list
+  template: 'schedule-item', // for todo list
   renderTodo: function(items) {
     var t = this;
     var $todo = t.$el.find('#todo-list');
@@ -17,9 +16,8 @@ return new App.View({
     } else {
       $empty.show();
     }
-    $todo.html(t.$template.render(items));
+    $todo.html(_.map(items, function(i) {
+      return t.$template(i);
+    }).join(''));
   }
-});
-
-//
 });

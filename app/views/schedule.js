@@ -1,11 +1,11 @@
 'use strict';
 
-define(["App"], function(App) {
-//
+var App    = require('../App.js');
+var moment = require('moment');
 
-return new App.View({
+module.exports = new App.View({
   id: 'schedule',
-  template: 'schedule-item-template',
+  template: 'schedule-item',
   title: 'Schedule',
   // custom methods
   events: {
@@ -43,7 +43,7 @@ return new App.View({
   },
   addSeparators: function(items) {
     var t = this;
-    var past, arr = [];
+    var past, separator, arr = [];
     for(var i = 0; i < items.length; i++) {
       //var now = new Date('2014-04-12 20:00:00');
       var now = new Date();
@@ -74,7 +74,9 @@ return new App.View({
     var $past;
     var items = t.addSeparators(model.data.sorted);
     var visible = 0;
-    var html = t.$template.render(items);
+    var html = _.map(items, function(i) {
+      return t.$template(i);
+    }).join('');
     t.$el.find('#schedule-list').html(html);
 
     /*
@@ -85,7 +87,4 @@ return new App.View({
     */
     return t;
   }
-});
-
-//
 });

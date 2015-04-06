@@ -1,9 +1,10 @@
 'use strict';
 
-define(["views/header","views/feedback"], function(headerView, feedbackView) {
-//
+var headerView   = require('../views/header.js');
+var feedbackView = require('../views/feedback.js');
 
-return function(event_id) {
+module.exports = function(event_id) {
+  
   var t = this;
 
   headerView.$el.find('.btn-back').show();
@@ -14,7 +15,5 @@ return function(event_id) {
 
   feedbackView.render(ev);
   feedbackView.show();
-};
 
-//
-});
+};

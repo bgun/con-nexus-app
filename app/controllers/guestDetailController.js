@@ -1,9 +1,11 @@
 'use strict';
 
-define(["views/header","views/guestDetail"], function(headerView, guestDetailView) {
-//
+var headerView      = require('../views/header.js');
+var guestDetailView = require('../views/guestDetail.js');
+var moment          = require('moment');
 
-return function(id) {
+module.exports = function(id) {
+  
   var t = this;
   var item = t.models.guests.getById(id);
 
@@ -22,7 +24,5 @@ return function(id) {
 
   guestDetailView.render(item);
   guestDetailView.show();
-};
 
-//
-});
+};
