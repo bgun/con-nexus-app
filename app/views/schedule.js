@@ -72,7 +72,7 @@ module.exports = new App.View({
     t.todo = todo;
 
     var $past;
-    var items = t.addSeparators(model.data.sorted);
+    var items = t.addSeparators(model.data);
     var visible = 0;
     var html = _.map(items, function(i) {
       return t.$template(i);

@@ -16,8 +16,8 @@ module.exports = new App.View({
       t.$template(item)
     );
 
-    $addTodo = t.$el.find('.add-todo');
-    $remTodo = t.$el.find('.remove-todo');
+    var $addTodo = t.$el.find('.add-todo');
+    var $remTodo = t.$el.find('.remove-todo');
 
     $addTodo.off().on('click',function(e) {
       var $target = $(e.target);

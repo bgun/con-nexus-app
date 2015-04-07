@@ -9,7 +9,7 @@ module.exports = new App.View({
   render: function(guests) {
     var t = this;
     t.$el.find('#guests-all').html(
-      _.map(guests.sorted, function(g) {
+      _.map(guests, function(g) {
         return t.$template(g);
       }).join('')
     );

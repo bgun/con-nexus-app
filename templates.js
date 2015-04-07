@@ -6,7 +6,9 @@ obj || (obj = {});
 var __t, __p = '', __e = _.escape, __j = Array.prototype.join;
 function print() { __p += __j.call(arguments, '') }
 with (obj) {
-__p += '<span class="event-date">' +
+__p += '<h1 class="event-title">' +
+((__t = ( title )) == null ? '' : __t) +
+'</h1>\n\n<span class="event-date">' +
 ((__t = ( fdate )) == null ? '' : __t) +
 '</span><br />\n<span class="event-room">' +
 ((__t = ( room )) == null ? '' : __t) +
