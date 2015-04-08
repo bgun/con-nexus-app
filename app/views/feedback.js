@@ -12,7 +12,6 @@ module.exports = new App.View({
         subject: this.$el.find('#feedback-subject').text(),
         text:    this.$el.find('#feedback-text').val()
       };
-      console.log(data);
       $.ajax({
         url: app.settings.api_url+"/feedback",
         type: "POST",
@@ -31,7 +30,7 @@ module.exports = new App.View({
     }
   },
   render: function(ev) {
-    var title = "LibertyCon";
+    var title = "JordanCon";
     if(ev) title = ev.title;
     this.$el.find('#feedback-text').val('');
     this.$el.find('#feedback-subject').text(title);

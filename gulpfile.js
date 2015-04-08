@@ -9,10 +9,6 @@ var gls        = require('gulp-live-server');
 
 var server = null;
 
-var fs = require('fs');
-var test = fs.readFileSync('package.json');
-console.log(test.toString());
-
 var conId = process.env.CON;
 if(!conId) {
   throw new Error("Must provide a convention ID");
