@@ -16,6 +16,10 @@ module.exports = new App.View({
     } else {
       $empty.show();
     }
+
+    var items = _.filter(items, function(i) {
+      return i;
+    });
     $todo.html(_.map(items, function(i) {
       return t.$template(i);
     }).join(''));

@@ -10,9 +10,13 @@ module.exports = function(id) {
   var item = t.models.events.getById(id);
 
   if(!item.guest_list_objects) {
-    item.guest_list_objects = _.sortBy(_.compact(_.map(item.guest_list, function(i) {
-      return t.models.guests.getById(i);
-    })), "name");
+    item.guest_list_objects = _(item.guest_list)
+      //.compact()
+      .map(function(guest) {
+        return t.models.guests.getById(guest.guest_id);
+      })
+      .sortBy("name")
+      .value();
   }
 
   headerView.$el.find('.btn-back').show();

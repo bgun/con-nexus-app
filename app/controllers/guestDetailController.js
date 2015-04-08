@@ -10,12 +10,17 @@ module.exports = function(id) {
   var item = t.models.guests.getById(id);
 
   if(!item.event_list_objects) {
-    item.event_list_objects = _.sortBy(_.map(item.event_list, function(event_id) {
-      var ev = t.models.events.getById(event_id);
-      return _.extend(ev, {
-        fdate: moment(ev.datetime).format("dddd h:mm a")
-      });
-    }), "datetime");
+    item.event_list_objects = _(item.event_list)
+      .filter(function(i) { return typeof i === "object"; })
+      .map(function(event) {
+        var ev = t.models.events.getById(event.event_id);
+        console.log(ev);
+        return _.extend(ev, {
+          fdate: moment(ev.datetime).format("dddd h:mm a")
+        });
+      })
+      .sortBy("datetime")
+      .value();
   }
 
   headerView.$el.find('.btn-back').show();

@@ -6,6 +6,7 @@ var moment = require('moment');
 var defaults = {
   title: "",
   room: "",
+  type: null,
   todo: false,
   past: false
 };
@@ -38,7 +39,11 @@ module.exports = new App.Model({
     });
   },
   getById: function(id) {
-    return _.findWhere(this.data, { event_id: id });
+    var ev = _.findWhere(this.data, { event_id: id });
+    if(!ev) {
+      throw new Error("Could not find event "+id);
+    }
+    return ev;
   }
 
 });

@@ -10,6 +10,7 @@ module.exports = new App.View({
     var t = this;
     t.$el.find('#guests-all').html(
       _.map(guests, function(g) {
+        console.log(g);
         return t.$template(g);
       }).join('')
     );

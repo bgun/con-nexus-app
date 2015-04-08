@@ -11,6 +11,7 @@ module.exports = function() {
 
   // TODO: load places
   var markers = this.models.places.data;
+  console.log("places",markers);
   localMapView.renderMarkers(markers, this.settings.con_id);
   localMapView.show();
 

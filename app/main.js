@@ -95,6 +95,7 @@ function onDeviceReady() {
 
     app.models.events.set(data.events, true);
     app.models.guests.set(data.guests, true);
+    console.log("places data",data.places);
     app.models.places.set(data.places, true);
 
     $loading.hide();

@@ -3,13 +3,12 @@
 var App = require('../App.js');
 
 var defaults = {
-  image: ""
+  image: "",
+  bio: ""
 };
 
 module.exports = new App.Model({
   parse: function(items) {
-    var assocItems = {};
-
     items = _.map(items, function(i) {
       return _.extend({
       }, defaults, i);
@@ -25,6 +24,10 @@ module.exports = new App.Model({
     });
   },
   getById: function(id) {
-    return _.findWhere(this.data, { guest_id: id });
+    var guest = _.findWhere(this.data, { guest_id: id });
+    if(!guest) {
+      throw new Error("Could not find guest: ",id)
+    }
+    return guest;
   }
 });
