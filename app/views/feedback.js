@@ -29,10 +29,8 @@ module.exports = new App.View({
       });
     }
   },
-  render: function(ev) {
-    var title = "JordanCon";
-    if(ev) title = ev.title;
+  render: function(subject) {
     this.$el.find('#feedback-text').val('');
-    this.$el.find('#feedback-subject').text(title);
+    this.$el.find('#feedback-subject').text(subject);
   }
 });
