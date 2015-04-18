@@ -11,7 +11,9 @@ var server = null;
 
 var conId = process.env.CON;
 if(!conId) {
-  throw new Error("Must provide a convention ID");
+  console.log("No con ID provided. Using test convention data");
+  conId = "testcon";
+
 }
 
 gulp.task('browserify', ['serve'], function() {

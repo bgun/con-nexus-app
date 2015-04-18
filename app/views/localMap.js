@@ -23,6 +23,7 @@ module.exports = new App.View({
   renderMarkers: function(places, con_id) {
     var t = this;
     var marker;
+    console.log("places",places);
     _.each(places, function(m) {
       var icon = L.icon({
         iconUrl: "./assets/"+con_id+"/map_marker_"+m.icon+".png",

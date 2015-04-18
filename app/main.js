@@ -44,7 +44,7 @@ function onDeviceReady() {
 
   window.app = new App({
     api_url: 'http://con-nexus.herokuapp.com/api',
-    con_id: "jcon2015"
+    con_id: "testcon"
   });
 
   // localStorage keys
@@ -88,6 +88,8 @@ function onDeviceReady() {
   };
 
   var init = function(data) {
+
+    window.data = data;
 
     localStorage.setItem(LS_KEY_CON, JSON.stringify(data));
 
@@ -177,6 +179,7 @@ function onDeviceReady() {
     con.getBasic({
       params: con_model_params,
       success: function(server_data) {
+        console.log("BASIC",server_data);
         if(server_data.updated > current_data.updated) {
           app.toast("Found an update! Downloading convention data...",20000);
           con.load(con_model_params, init);
