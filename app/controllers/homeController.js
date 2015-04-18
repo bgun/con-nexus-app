@@ -12,9 +12,12 @@ module.exports = function() {
   headerView.setTitle(homeView.title);
 
   var todoArray = this.models.todo.data;
-  var todoItems = _.map(todoArray, function(event_id) {
-    return app.models.events.getById(event_id);
-  });
+  var todoItems = _(todoArray)
+    .map(function(event_id) {
+      return app.models.events.getById(event_id);
+    })
+    .sortBy("datetime")
+    .value();
   homeView.renderTodo(todoItems);
   homeView.show();
 
