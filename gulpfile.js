@@ -13,8 +13,9 @@ var conId = process.env.CON;
 if(!conId) {
   console.log("No con ID provided. Using test convention data");
   conId = "testcon";
-
 }
+
+// TODO: Build process cleanup. Should take a path to write built files (phonegap directory).
 
 gulp.task('browserify', ['serve'], function() {
   return gulp.src('app/main.js')
@@ -23,7 +24,7 @@ gulp.task('browserify', ['serve'], function() {
     }))
     .pipe(concat('bundle.js'))
     //.pipe(uglify())
-    .pipe(gulp.dest('./'))
+    .pipe(gulp.dest('./build/'))
     .pipe(server.notify());
 });
 
@@ -31,7 +32,7 @@ gulp.task('less', ['serve'], function() {
   return gulp.src('assets/'+conId+'/'+conId+'.less')
     .pipe(less())
     .pipe(concat('bundle.css'))
-    .pipe(gulp.dest('./'))
+    .pipe(gulp.dest('./build/'))
     .pipe(server.notify());
 });
  
@@ -43,7 +44,7 @@ gulp.task('templates', ['serve'], function () {
       }
     }))
     .pipe(concat('templates.js'))
-    .pipe(gulp.dest('./'))
+    .pipe(gulp.dest('./build/'))
     .pipe(server.notify());
 });
 
