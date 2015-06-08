@@ -4,11 +4,7 @@
   "description": "con-nexus app for phonegap",
   "main": "web.js",
   "scripts": {
-<<<<<<< HEAD
     "start": "gulp",
-=======
-    "start": "node server.js",
->>>>>>> aef138bde17f3ab47e4ea57c6a67bc74d63729e4
     "test": "mocha"
   },
   "repository": {
