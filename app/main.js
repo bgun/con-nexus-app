@@ -44,7 +44,7 @@ function onDeviceReady() {
 
   window.app = new App({
     api_url: 'http://con-nexus.herokuapp.com/api',
-    con_id: "testcon"
+    con_id: "libertycon2015"
   });
 
   // localStorage keys

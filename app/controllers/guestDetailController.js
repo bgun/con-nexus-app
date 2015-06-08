@@ -11,9 +11,9 @@ module.exports = function(id) {
 
   if(!item.event_list_objects) {
     item.event_list_objects = _(item.event_list)
-      .filter(function(i) { return typeof i === "object"; })
-      .map(function(event) {
-        var ev = t.models.events.getById(event.event_id);
+      //.filter(function(i) { return typeof i === "object"; })
+      .map(function(event_id) {
+        var ev = t.models.events.getById(event_id);
         console.log(ev);
         return _.extend(ev, {
           fdate: moment(ev.datetime).format("dddd h:mm a")

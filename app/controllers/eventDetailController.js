@@ -9,11 +9,13 @@ module.exports = function(id) {
   var t = this;
   var item = t.models.events.getById(id);
 
+  console.log("event detail item",item);
+
   if(!item.guest_list_objects) {
     item.guest_list_objects = _(item.guest_list)
       //.compact()
-      .map(function(guest) {
-        return t.models.guests.getById(guest.guest_id);
+      .map(function(guest_id) {
+        return t.models.guests.getById(guest_id);
       })
       .sortBy("name")
       .value();
