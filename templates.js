@@ -11,7 +11,7 @@ __p += '<h1 class="event-title">' +
 '</h1>\n\n<span class="event-date">' +
 ((__t = ( fdate )) == null ? '' : __t) +
 '</span><br />\n<span class="event-room">' +
-((__t = ( room )) == null ? '' : __t) +
+((__t = ( room_name )) == null ? '' : __t) +
 '</span>\n<p class="event-description">' +
 ((__t = ( description )) == null ? '' : __t) +
 '</p>\n<button type="button" class="btn btn-todo remove-todo ';
@@ -157,7 +157,7 @@ __p += '">\n<a href="#event-detail/' +
 '">\n  <span class="title">' +
 ((__t = ( title )) == null ? '' : __t) +
 '</span>\n  <span class="room">' +
-((__t = ( room )) == null ? '' : __t) +
+((__t = ( room_name )) == null ? '' : __t) +
 '</span>\n  <span class="time">' +
 ((__t = ( fdate )) == null ? '' : __t) +
 '</span>\n</a>\n</li>\n';

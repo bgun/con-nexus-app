@@ -1,7 +1,7 @@
 <h1 class="event-title"><%= title %></h1>
 
 <span class="event-date"><%= fdate %></span><br />
-<span class="event-room"><%= room %></span>
+<span class="event-room"><%= room_name %></span>
 <p class="event-description"><%= description %></p>
 <button type="button" class="btn btn-todo remove-todo <% if(!inTodo) { %>hidden<% } %>" data-event-id="<%= event_id %>">Remove from My Todo</button>
 <button type="button" class="btn btn-todo add-todo    <% if(inTodo) { %>hidden<% } %>" data-event-id="<%= event_id %>">Add to My Todo</button>
