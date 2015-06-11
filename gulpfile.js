@@ -13,8 +13,13 @@ var conId = process.env.CON;
 if(!conId) {
   console.log("No con ID provided. Using test convention data");
   conId = "testcon";
-
 }
+console.log("Loading convention "+conId);
+
+var dest = '../../Dev/libertycon/www/';
+
+console.log("Serving from %s", dest);
+console.log("");
 
 gulp.task('browserify', ['serve'], function() {
   return gulp.src('app/main.js')
@@ -23,7 +28,7 @@ gulp.task('browserify', ['serve'], function() {
     }))
     .pipe(concat('bundle.js'))
     //.pipe(uglify())
-    .pipe(gulp.dest('./'))
+    .pipe(gulp.dest(dest))
     .pipe(server.notify());
 });
 
@@ -31,7 +36,7 @@ gulp.task('less', ['serve'], function() {
   return gulp.src('assets/'+conId+'/'+conId+'.less')
     .pipe(less())
     .pipe(concat('bundle.css'))
-    .pipe(gulp.dest('./'))
+    .pipe(gulp.dest(dest))
     .pipe(server.notify());
 });
  
@@ -43,7 +48,7 @@ gulp.task('templates', ['serve'], function () {
       }
     }))
     .pipe(concat('templates.js'))
-    .pipe(gulp.dest('./'))
+    .pipe(gulp.dest(dest))
     .pipe(server.notify());
 });
 
@@ -54,7 +59,7 @@ gulp.task('watch', ['serve'], function() {
 });
 
 gulp.task('serve', function() {
-  server = gls.static('./', 5001);
+  server = gls.static(dest, 5001);
   server.start();
 });
 

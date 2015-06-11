@@ -6,7 +6,7 @@ var feedbackView = require('../views/feedback.js');
 module.exports = function(event_id) {
   
   var t = this;
-  var subject = "JordanCon";
+  var subject = "LibertyCon";
   var ev;
 
   headerView.$el.find('.btn-back').show();
