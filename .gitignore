@@ -1,8 +1,8 @@
 *.log
 node_modules/
+build/
 
 # phonegap
 config.xml
 res/
 
-bundle.*

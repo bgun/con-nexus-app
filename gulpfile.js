@@ -21,6 +21,8 @@ var dest = '../../Dev/libertycon/www/';
 console.log("Serving from %s", dest);
 console.log("");
 
+// TODO: Build process cleanup. Should take a path to write built files (phonegap directory).
+
 gulp.task('browserify', ['serve'], function() {
   return gulp.src('app/main.js')
     .pipe(browserify({
@@ -28,7 +30,11 @@ gulp.task('browserify', ['serve'], function() {
     }))
     .pipe(concat('bundle.js'))
     //.pipe(uglify())
+<<<<<<< HEAD
     .pipe(gulp.dest(dest))
+=======
+    .pipe(gulp.dest('./build/'))
+>>>>>>> bfbf8b59674a81a5128f97953537a47c32ab3aee
     .pipe(server.notify());
 });
 
@@ -36,7 +42,11 @@ gulp.task('less', ['serve'], function() {
   return gulp.src('assets/'+conId+'/'+conId+'.less')
     .pipe(less())
     .pipe(concat('bundle.css'))
+<<<<<<< HEAD
     .pipe(gulp.dest(dest))
+=======
+    .pipe(gulp.dest('./build/'))
+>>>>>>> bfbf8b59674a81a5128f97953537a47c32ab3aee
     .pipe(server.notify());
 });
  
@@ -48,7 +58,11 @@ gulp.task('templates', ['serve'], function () {
       }
     }))
     .pipe(concat('templates.js'))
+<<<<<<< HEAD
     .pipe(gulp.dest(dest))
+=======
+    .pipe(gulp.dest('./build/'))
+>>>>>>> bfbf8b59674a81a5128f97953537a47c32ab3aee
     .pipe(server.notify());
 });
 
